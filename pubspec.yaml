@@ -1,0 +1,50 @@
+name: motora
+description: "MOTORA - تجربة عربية فاخرة لعالم السيارات"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/subset/Cairo.ttf
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/subset/Tajawal.ttf
+    - family: Almarai
+      fonts:
+        - asset: assets/fonts/subset/Almarai.ttf
+    - family: Changa
+      fonts:
+        - asset: assets/fonts/subset/Changa.ttf
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/subset/Amiri.ttf
+    - family: Scheherazade
+      fonts:
+        - asset: assets/fonts/subset/ScheherazadeNew.ttf
+    - family: ReemKufi
+      fonts:
+        - asset: assets/fonts/subset/ReemKufi.ttf
+    - family: ArefRuqaa
+      fonts:
+        - asset: assets/fonts/subset/ArefRuqaaInk.ttf
+    - family: NotoKufi
+      fonts:
+        - asset: assets/fonts/subset/NotoKufiArabic.ttf
+    - family: IBMPlexArabic
+      fonts:
+        - asset: assets/fonts/subset/IBMPlexSansArabic.ttf
