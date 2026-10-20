@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: motora-android-${{ github.ref }}
+  group: zaid-cars-android-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -43,33 +43,34 @@ jobs:
       - name: Test
         run: flutter test
 
-      - name: Build debug APK
-        run: flutter build apk --debug --build-name=1.0.0 --build-number=1
+      - name: Build signed release APK for Samsung
+        run: flutter build apk --release --target-platform android-arm64 --build-name=1.0.36 --build-number=2036
 
       - name: Prepare named APK
-        run: cp build/app/outputs/flutter-apk/app-debug.apk MOTORA-v1.0.0-build.1.apk
+        run: cp build/app/outputs/flutter-apk/app-release.apk Zaid-Cars-v1.0.36-build.2036-Samsung.apk
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MOTORA-v1.0.0-build.1
-          path: MOTORA-v1.0.0-build.1.apk
+          name: Zaid-Cars-v1.0.36-build.2036-Samsung
+          path: Zaid-Cars-v1.0.36-build.2036-Samsung.apk
           if-no-files-found: error
           retention-days: 14
 
       - name: Publish installable pre-release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.0-build.1
-          name: MOTORA 1.0.0 (Build 1)
+          tag_name: v1.0.36-build.2036
+          name: زيد للسيارات 1.0.36 (Build 2036)
           body: |
             نسخة Android تجريبية جاهزة للتثبيت.
 
-            - Version: 1.0.0
-            - Build: 1
-            - Package: com.motora.motora
-            - Build type: Debug APK
+            - Version: 1.0.36
+            - Build: 2036
+            - Package: com.zaidcars.zaid_cars_app
+            - Architecture: arm64-v8a (Samsung)
+            - Build type: Release APK
           prerelease: true
           make_latest: false
           fail_on_unmatched_files: true
-          files: MOTORA-v1.0.0-build.1.apk
+          files: Zaid-Cars-v1.0.36-build.2036-Samsung.apk

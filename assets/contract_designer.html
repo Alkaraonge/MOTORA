@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عقد بيع سيارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f2eee3;
+    --card:#fffdf8;
+    --card-2:#f9f5ea;
+    --text:#221f18;
+    --muted:#837a64;
+    --border:#ddd2b4;
+    --accent:#0c3b34;
+    --accent-2:#12594e;
+    --accent-soft:#e4efe8;
+    --gold:#a97e12;
+    --gold-2:#d4af37;
+    --gold-soft:#f4ead0;
+    --paper:#fffdf6;
+    --paper-text:#201a10;
+    --shadow:0 14px 38px rgba(70,52,10,.16);
+    --input-bg:#fffefa;
+  }
+  body.dark{
+    --bg:#0a0e13;
+    --card:#141b24;
+    --card-2:#1a2430;
+    --text:#ece6d4;
+    --muted:#98a0a8;
+    --border:#2e3a46;
+    --accent:#e3c565;
+    --accent-2:#c9a227;
+    --accent-soft:#28220f;
+    --gold:#e3c565;
+    --gold-2:#b8912f;
+    --gold-soft:#29220f;
+    --shadow:0 14px 38px rgba(0,0,0,.5);
+    --input-bg:#0f151d;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Cairo','Segoe UI',Tahoma,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(900px 450px at -10% 110%, rgba(12,59,52,.08), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    transition:background .3s;
+  }
+
+  /* ================= الترويسة ================= */
+  .app-header{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:16px 26px;
+    background:linear-gradient(135deg,#0a2e29 0%, #06231f 55%, #041714 100%);
+    color:#f4e8c8;
+    border-bottom:3px solid var(--gold-2);
+    box-shadow:var(--shadow);
+    position:sticky;top:0;z-index:50;
+  }
+  body.dark .app-header{
+    background:linear-gradient(135deg,#101418 0%, #0a0e13 60%, #06090c 100%);
+  }
+  .app-header .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px}
+  .app-header .brand .logo{
+    width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(135deg,var(--gold-2),#8a6a12);
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+    box-shadow:0 4px 12px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .app-header .brand small{display:block;font-size:11.5px;font-weight:600;color:#cbb877;letter-spacing:.5px}
+  .btn{
+    font-family:inherit;font-size:14px;font-weight:800;
+    border:none;border-radius:11px;padding:9px 18px;cursor:pointer;
+    transition:.15s;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-light{
+    background:linear-gradient(135deg,#e9cf7e,#c9a227);
+    color:#3a2c05;
+    box-shadow:0 4px 12px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .btn-light:hover{filter:brightness(1.06)}
+  .btn-ghost{background:transparent;color:#f4e8c8;border:1.5px solid rgba(212,175,55,.55)}
+  .btn-ghost:hover{background:rgba(212,175,55,.14)}
+  .btn-accent{
+    background:linear-gradient(135deg,#0f4a41,#0c3b34);color:#f4e8c8;
+    border:1px solid rgba(212,175,55,.35);
+  }
+  .btn-accent:hover{filter:brightness(1.15)}
+  .btn-danger{background:#fbe4e4;color:#9c1c1c;border:1px solid #eccaca}
+  body.dark .btn-danger{background:#3a1d1d;color:#f87171;border-color:#54302f}
+  .btn-print{
+    background:linear-gradient(135deg,#e9cf7e,#c9a227);color:#3a2c05;
+    box-shadow:0 4px 12px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .btn-print:hover{filter:brightness(1.07)}
+
+  /* ================= التخطيط ================= */
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(340px, 430px) 1fr;
+    gap:22px;
+    max-width:1420px;
+    margin:22px auto;
+    padding:0 22px 44px;
+    align-items:start;
+  }
+  @media (max-width: 980px){
+    .layout{grid-template-columns:1fr}
+  }
+
+  /* ================= نموذج الإدخال ================= */
+  .panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .panel-head{
+    padding:14px 18px;
+    background:linear-gradient(135deg, var(--card-2), transparent);
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+  }
+  .panel-head h2{margin:0;font-size:17px;font-weight:800;display:flex;align-items:center;gap:8px}
+  .panel-body{padding:18px}
+  .tpl-picker{
+    margin-bottom:16px;
+    background:linear-gradient(135deg,var(--gold-soft),transparent);
+    border:1.5px solid var(--gold-2);
+    border-radius:14px;
+    padding:12px 14px;
+  }
+  .tpl-picker label{
+    display:block;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:6px;
+  }
+  .tpl-picker select{
+    width:100%;
+    font-family:inherit;font-size:14px;font-weight:700;
+    color:var(--text);
+    background:var(--input-bg);
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    padding:9px 12px;
+    outline:none;cursor:pointer;
+  }
+  fieldset{
+    border:1px solid var(--border);
+    border-radius:14px;
+    margin:0 0 16px;
+    padding:14px 14px 16px;
+    background:var(--card-2);
+  }
+  fieldset legend{
+    font-size:13.5px;font-weight:800;color:var(--accent);
+    padding:0 10px;
+  }
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .grid1{display:grid;grid-template-columns:1fr;gap:10px}
+  .field label{
+    display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:4px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    font-family:inherit;font-size:14px;
+    color:var(--text);
+    background:var(--input-bg);
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    padding:8px 12px;
+    outline:none;
+    transition:.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px var(--gold-soft);
+  }
+  .field textarea{resize:vertical;min-height:64px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .toolbar .btn{flex:1;min-width:120px;padding:11px}
+
+  /* ============================================================
+     النموذج ١ — الذهب الكلاسيكي (الافتراضي)
+     ============================================================ */
+  .paper-wrap{display:flex;flex-direction:column;gap:16px}
+  .paper{
+    background:var(--paper);
+    color:var(--paper-text);
+    border-radius:4px;
+    box-shadow:var(--shadow);
+    padding:14px;
+    width:100%;
+    max-width:840px;
+    margin:0 auto;
+    position:relative;
+    line-height:2;
+    font-size:15px;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .paper-inner{
+    border:3px double #b8912f;
+    border-radius:3px;
+    padding:32px 36px 28px;
+    position:relative;
+    background:
+      radial-gradient(700px 220px at 50% -60px, rgba(212,175,55,.10), transparent 70%);
+  }
+  .corner{position:absolute;width:26px;height:26px;border-color:#a97e12;border-style:solid;z-index:3}
+  .corner.tl{top:6px;left:6px;border-width:3px 0 0 3px}
+  .corner.tr{top:6px;right:6px;border-width:3px 3px 0 0}
+  .corner.bl{bottom:6px;left:6px;border-width:0 0 3px 3px}
+  .corner.br{bottom:6px;right:6px;border-width:0 3px 3px 0}
+  .watermark{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:170px;color:#a97e12;opacity:.05;font-weight:800;pointer-events:none;user-select:none;
+    font-family:'Amiri',serif;z-index:1;
+  }
+  .watermark2{display:none}
+
+  /* ترويسة زيد (تظهر بنماذج العلامة ١١-١٥ فقط) */
+  .brand-band{display:none}
+  .swoosh{display:none}
+  body.zaid .brand-band{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    background:#111;padding:16px 26px;margin:-32px -36px 20px;
+  }
+  body.zaid .swoosh{display:block;margin:6px 0 2px;color:#0090d4}
+  .bb-logo{display:flex;align-items:center;gap:10px}
+  .bb-logo .bb-word{
+    color:#fff;font-family:'Tajawal',sans-serif;font-weight:900;font-style:italic;
+    font-size:32px;letter-spacing:1px;line-height:1;transform:skewX(-6deg);
+  }
+  .bb-names{text-align:left}
+  .bb-ar{color:#fff;font-weight:800;font-size:23px;line-height:1.3}
+  .bb-en{color:#00aeef;font-weight:800;font-style:italic;font-size:15px;letter-spacing:1px}
+  body.zaid .letterhead,body.zaid .watermark,body.zaid .corner,body.zaid .gold-divider{display:none}
+  body.zaid .watermark2{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:'Tajawal',sans-serif;font-weight:900;font-style:italic;
+    font-size:56px;letter-spacing:8px;color:#000;opacity:.05;pointer-events:none;user-select:none;z-index:1;
+  }
+
+  /* الترويسة الرسمية (النماذج الكلاسيكية) */
+  .letterhead{text-align:center;padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid #e3d5a8;position:relative}
+  .letterhead .ornament{color:#b8912f;font-size:13px;letter-spacing:10px;margin-bottom:2px}
+  .letterhead .company-name{
+    font-family:'Amiri','Cairo',serif;
+    font-size:34px;font-weight:700;
+    background:linear-gradient(135deg,#8a6a12 10%,#d4af37 45%,#8a6a12 90%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#8a6a12;
+    line-height:1.4;
+  }
+  .letterhead .en-name{
+    font-size:11px;font-weight:700;letter-spacing:5px;color:#8a8272;margin-top:0;
+    font-family:'Tajawal',sans-serif;
+  }
+  .letterhead .tagline{
+    font-size:13px;font-weight:700;color:#6b5b23;letter-spacing:1px;margin-top:2px;
+  }
+  .gold-divider{
+    display:flex;align-items:center;gap:10px;margin:10px auto 0;max-width:420px;color:#b8912f;font-size:11px;
+  }
+  .gold-divider::before,.gold-divider::after{
+    content:'';flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,#c9a227,transparent);
+  }
+  .doc-title{text-align:center;margin:2px 0 10px}
+  .doc-title .basmala{font-family:'Amiri',serif;font-size:16px;color:#3f3822;margin-bottom:2px}
+  .doc-title h1{
+    margin:0;font-family:'Amiri','Cairo',serif;
+    font-size:26px;font-weight:700;color:#0c3b34;letter-spacing:1px;
+  }
+  .top-meta{display:flex;justify-content:center;margin-bottom:14px}
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;
+    font-size:13px;font-weight:700;
+  }
+  .meta-row .m{
+    background:#faf3dd;border:1px solid #e3d5a8;border-radius:20px;padding:2px 14px;color:#3d3421;
+  }
+  .meta-row .m b{color:#8a6a12}
+
+  /* صفوف الاستمارة — نفس أسلوب الطباعة القديمة */
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:5px 30px;margin-bottom:8px;font-size:14.5px}
+  .fcell{text-align:right}
+  .fcell b{color:#0c3b34}
+  .fill{
+    display:inline-block;min-width:90px;
+    border-bottom:1.5px dotted #9a8b62;
+    padding:0 8px;text-align:center;font-weight:700;color:#222;
+  }
+  .agree-line{
+    text-align:center;font-weight:800;font-size:16px;color:#0c3b34;margin:16px 0 12px;
+  }
+  .agree-line .orn{color:#b8912f;font-size:12px;letter-spacing:8px;display:block;margin-bottom:2px}
+  .doc-para{font-size:15px;text-align:justify;margin-bottom:12px;color:#26221a}
+  .doc-para .lead{font-weight:800;color:#0c3b34}
+  .notes-title{
+    font-weight:800;color:#0c3b34;font-size:15.5px;margin:14px 0 7px;
+    background:linear-gradient(90deg,#f4ead0,rgba(244,234,208,0));
+    border-right:4px solid #c9a227;padding:4px 12px;border-radius:6px;
+  }
+  .notes-box{
+    border:1.5px dashed #c3b280;border-radius:10px;padding:8px 14px;min-height:38px;
+    font-size:14px;background:#fffef9;margin-bottom:10px;
+  }
+  .rules{font-size:14px;color:#33302a;text-align:justify}
+  .rules ol{margin:4px 0;padding-right:20px}
+  .rules li{margin-bottom:5px}
+  .rules li::marker{font-weight:800;color:#8a6a12}
+
+  /* التواقيع — التوقيع فوق الاسم */
+  .sign-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;margin-top:32px;text-align:center;position:relative;z-index:2;
+  }
+  .sign-grid .box{
+    border-top:2.5px solid #a97e12;padding:10px 8px 6px;
+    background:linear-gradient(180deg,rgba(244,234,208,.35),transparent);
+    border-radius:0 0 10px 10px;
+  }
+  .sign-grid .who{color:#0c3b34;font-size:14px;font-weight:800;margin-bottom:4px}
+  .sign-space{height:36px;margin:2px 12px 0;border-bottom:1.5px dotted #9a8b62}
+  .sign-label{font-size:11.5px;color:#8a8272;margin-top:3px;font-weight:600}
+  .sign-name{font-weight:800;font-size:15.5px;margin-top:12px;color:#222;min-height:22px}
+  .sign-role{font-size:11.5px;color:#8a8272;margin-top:2px;font-weight:600}
+
+  .paper-footer{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:4px 22px;
+    font-size:12.5px;color:#4d4a3a;font-weight:600;
+    margin-top:26px;border-top:1px solid #e3d5a8;padding-top:10px;
+    position:relative;z-index:2;
+  }
+  .paper-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+
+  /* ============================================================
+     النموذج ٢ — السويسري البسيط (Swiss Minimal)
+     ============================================================ */
+  body.tpl-2 .paper{background:#fff;padding:10px}
+  body.tpl-2 .paper-inner{border:none;padding:40px 44px;background:#fff}
+  body.tpl-2 .corner,body.tpl-2 .watermark,body.tpl-2 .letterhead .ornament,body.tpl-2 .gold-divider{display:none}
+  body.tpl-2 .letterhead{border-bottom:3px solid #111;padding-bottom:16px}
+  body.tpl-2 .letterhead .company-name{
+    font-family:'Tajawal',sans-serif;background:none;-webkit-text-fill-color:#111;color:#111;
+    font-size:32px;font-weight:800;letter-spacing:0;
+  }
+  body.tpl-2 .letterhead .en-name{color:#666;letter-spacing:6px}
+  body.tpl-2 .letterhead .tagline{color:#e30613;letter-spacing:4px}
+  body.tpl-2 .doc-title .basmala{color:#555;font-family:'Tajawal',sans-serif}
+  body.tpl-2 .doc-title h1{
+    font-family:'Tajawal',sans-serif;color:#111;font-size:24px;font-weight:800;
+    border-bottom:2px solid #111;display:inline-block;padding-bottom:2px;
+  }
+  body.tpl-2 .meta-row .m{
+    background:none;border:none;border-radius:0;border-bottom:2px solid #e30613;
+    color:#111;padding:0 4px;
+  }
+  body.tpl-2 .meta-row .m b{color:#e30613}
+  body.tpl-2 .doc-para,body.tpl-2 .rules ol{color:#222}
+  body.tpl-2 .fcell b,body.tpl-2 .doc-para .lead,body.tpl-2 .agree-line{color:#111}
+  body.tpl-2 .agree-line .orn{color:#e30613}
+  body.tpl-2 .fill{border-bottom:1.5px solid #999}
+  body.tpl-2 .notes-title{background:none;border-right:4px solid #e30613;color:#111;border-radius:0}
+  body.tpl-2 .notes-box{border:1.5px dashed #111;border-radius:0;background:#fff}
+  body.tpl-2 .rules li::marker{color:#e30613}
+  body.tpl-2 .sign-grid .box{background:none;border-top:3px solid #111;border-radius:0}
+  body.tpl-2 .sign-grid .who{color:#111}
+  body.tpl-2 .sign-space{border-bottom-color:#999}
+  body.tpl-2 .sign-name{color:#111}
+  body.tpl-2 .sign-label,body.tpl-2 .sign-role{color:#666}
+  body.tpl-2 .paper-footer{border-top:3px solid #111;color:#111}
+
+  /* ============================================================
+     النموذج ٣ — الفخامة الليلية (Black & Gold)
+     ============================================================ */
+  body.tpl-3 .paper{background:#111;color:#f0e5c5}
+  body.tpl-3 .paper-inner{
+    background:radial-gradient(700px 220px at 50% -60px, rgba(212,175,55,.14), transparent 70%);
+  }
+  body.tpl-3 .corner{border-color:#d4af37}
+  body.tpl-3 .watermark{color:#d4af37;opacity:.07}
+  body.tpl-3 .letterhead{border-bottom-color:rgba(212,175,55,.35)}
+  body.tpl-3 .letterhead .company-name{
+    background:linear-gradient(135deg,#f5e3a3,#d4af37 45%,#8a6a12);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  body.tpl-3 .letterhead .en-name,body.tpl-3 .letterhead .tagline{color:#cbb877}
+  body.tpl-3 .gold-divider{color:#d4af37}
+  body.tpl-3 .doc-title .basmala{color:#cbb877}
+  body.tpl-3 .doc-title h1{color:#f5e3a3}
+  body.tpl-3 .meta-row .m{background:#1b1a14;border-color:#6b5a1e;color:#e8ddba}
+  body.tpl-3 .meta-row .m b{color:#f0d98c}
+  body.tpl-3 .doc-para{color:#e6dbb6}
+  body.tpl-3 .fcell b,body.tpl-3 .doc-para .lead{color:#f5e3a3}
+  body.tpl-3 .agree-line{color:#f5e3a3}
+  body.tpl-3 .agree-line .orn{color:#d4af37}
+  body.tpl-3 .fill{border-bottom-color:#8a7a45;color:#fff}
+  body.tpl-3 .notes-title{background:linear-gradient(90deg,#26210f,rgba(38,33,15,0));color:#f5e3a3;border-right-color:#d4af37}
+  body.tpl-3 .notes-box{border-color:#6b5a1e;background:#181712}
+  body.tpl-3 .rules,body.tpl-3 .rules ol{color:#ddd2ae}
+  body.tpl-3 .rules li::marker{color:#f0d98c}
+  body.tpl-3 .sign-grid .box{background:linear-gradient(180deg,rgba(212,175,55,.08),transparent);border-top-color:#d4af37}
+  body.tpl-3 .sign-grid .who{color:#f5e3a3}
+  body.tpl-3 .sign-space{border-bottom-color:#8a7a45}
+  body.tpl-3 .sign-name{color:#fff}
+  body.tpl-3 .sign-label,body.tpl-3 .sign-role{color:#9a8f6a}
+  body.tpl-3 .paper-footer{border-top-color:rgba(212,175,55,.35);color:#b8ac86}
+
+  /* ============================================================
+     النموذج ٤ — آرت ديكو (Art Deco)
+     ============================================================ */
+  body.tpl-4 .paper{background:#f6eeda;padding:16px}
+  body.tpl-4 .paper-inner{
+    border:4px solid #111;outline:1.5px solid #b8860b;outline-offset:5px;
+    background:radial-gradient(600px 180px at 50% -50px, rgba(184,134,11,.12), transparent 70%);
+  }
+  body.tpl-4 .corner{border-color:#111}
+  body.tpl-4 .watermark{color:#b8860b;font-family:'Aref Ruqaa',serif}
+  body.tpl-4 .letterhead{border-bottom:4px double #111;padding-bottom:14px}
+  body.tpl-4 .letterhead .ornament{color:#111;letter-spacing:16px;font-size:15px}
+  body.tpl-4 .letterhead .company-name{
+    font-family:'Aref Ruqaa',serif;background:none;-webkit-text-fill-color:#111;color:#111;
+    font-size:36px;font-weight:700;
+  }
+  body.tpl-4 .letterhead .en-name{color:#6b5b23}
+  body.tpl-4 .letterhead .tagline{color:#b8860b;letter-spacing:3px}
+  body.tpl-4 .gold-divider{color:#111}
+  body.tpl-4 .doc-title .basmala{font-family:'Aref Ruqaa',serif;color:#3a3421}
+  body.tpl-4 .doc-title h1{
+    font-family:'Aref Ruqaa',serif;color:#e9cf7e;background:#111;font-size:24px;font-weight:700;
+    display:inline-block;padding:4px 44px;border-radius:40px;letter-spacing:2px;
+  }
+  body.tpl-4 .meta-row .m{
+    background:none;border:none;border-radius:0;border-bottom:2px solid #b8860b;color:#111;padding:0 4px;
+  }
+  body.tpl-4 .meta-row .m b{color:#b8860b}
+  body.tpl-4 .doc-para,body.tpl-4 .rules ol{color:#2c2a22}
+  body.tpl-4 .fcell b,body.tpl-4 .doc-para .lead{color:#111}
+  body.tpl-4 .agree-line{font-family:'Aref Ruqaa',serif;color:#111;font-size:18px}
+  body.tpl-4 .agree-line .orn{color:#b8860b}
+  body.tpl-4 .fill{border-bottom-color:#8a7a45}
+  body.tpl-4 .notes-title{
+    font-family:'Aref Ruqaa',serif;background:#111;color:#e9cf7e;border-right:none;
+    text-align:center;border-radius:2px;
+  }
+  body.tpl-4 .notes-box{border:2px dashed #111;border-radius:0;background:#fbf5e4}
+  body.tpl-4 .rules li::marker{color:#b8860b}
+  body.tpl-4 .sign-grid .box{background:none;border-top:3px solid #111;border-radius:0}
+  body.tpl-4 .sign-grid .who{color:#111;font-family:'Aref Ruqaa',serif}
+  body.tpl-4 .sign-space{border-bottom-color:#8a7a45}
+  body.tpl-4 .sign-name{color:#111}
+  body.tpl-4 .sign-label,body.tpl-4 .sign-role{color:#6b5b23}
+  body.tpl-4 .paper-footer{border-top:4px double #111;color:#111}
+
+  /* ============================================================
+     النموذج ٥ — الملكي الأخضر (Royal Emerald)
+     ============================================================ */
+  body.tpl-5 .paper{background:#fdfcf7;padding:16px}
+  body.tpl-5 .paper-inner{
+    border:2.5px solid #0c3b34;outline:1px solid #c9a227;outline-offset:4px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(12,59,52,.08), transparent 70%);
+  }
+  body.tpl-5 .corner{border-color:#0c3b34}
+  body.tpl-5 .watermark{color:#0c3b34;opacity:.05}
+  body.tpl-5 .letterhead{
+    background:linear-gradient(135deg,#0c3b34,#0a2e29);border-radius:12px;
+    padding:18px 12px 16px;border-bottom:none;margin-bottom:18px;
+  }
+  body.tpl-5 .letterhead .ornament{color:#d4af37}
+  body.tpl-5 .letterhead .en-name{color:#9dc3b4}
+  body.tpl-5 .letterhead .tagline{color:#cfe0d8}
+  body.tpl-5 .gold-divider{color:#d4af37}
+  body.tpl-5 .doc-title .basmala{color:#3f4a3a}
+  body.tpl-5 .doc-title h1{color:#0c3b34}
+  body.tpl-5 .meta-row .m{background:#eef6f2;border-color:#bcd8cd;color:#223b33}
+  body.tpl-5 .meta-row .m b{color:#0c3b34}
+  body.tpl-5 .doc-para{color:#2f3a33}
+  body.tpl-5 .fcell b,body.tpl-5 .doc-para .lead{color:#0c3b34}
+  body.tpl-5 .agree-line{color:#0c3b34}
+  body.tpl-5 .agree-line .orn{color:#0c3b34}
+  body.tpl-5 .fill{border-bottom-color:#7fa294}
+  body.tpl-5 .notes-title{background:linear-gradient(90deg,#e4efe8,rgba(228,239,232,0));color:#0c3b34;border-right-color:#0c3b34}
+  body.tpl-5 .notes-box{border-color:#8fb5a6;background:#fbfefd}
+  body.tpl-5 .rules,body.tpl-5 .rules ol{color:#2f3a33}
+  body.tpl-5 .rules li::marker{color:#0c3b34}
+  body.tpl-5 .sign-grid .box{background:linear-gradient(180deg,rgba(228,239,232,.5),transparent);border-top-color:#0c3b34}
+  body.tpl-5 .sign-grid .who{color:#0c3b34}
+  body.tpl-5 .sign-space{border-bottom-color:#7fa294}
+  body.tpl-5 .sign-name{color:#223b33}
+  body.tpl-5 .sign-label,body.tpl-5 .sign-role{color:#5d7a6d}
+  body.tpl-5 .paper-footer{color:#0c3b34;border-top-color:#bcd8cd}
+
+  /* ============================================================
+     النموذج ٦ — الكوربوريت البحري (Corporate Navy)
+     ============================================================ */
+  body.tpl-6 .paper{background:#fff;padding:12px}
+  body.tpl-6 .paper-inner{
+    border:1px solid #c8d3e0;border-radius:6px;background:#fff;
+    box-shadow:inset 0 4px 0 #1e3a5f;
+  }
+  body.tpl-6 .corner,body.tpl-6 .watermark,body.tpl-6 .letterhead .ornament,body.tpl-6 .gold-divider{display:none}
+  body.tpl-6 .letterhead{border-bottom:2px solid #1e3a5f;padding-bottom:14px}
+  body.tpl-6 .letterhead .company-name{
+    font-family:'Tajawal',sans-serif;
+    background:linear-gradient(135deg,#1e3a5f,#3b6ea5);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#1e3a5f;
+    font-size:32px;font-weight:800;
+  }
+  body.tpl-6 .letterhead .en-name{color:#64748b}
+  body.tpl-6 .letterhead .tagline{color:#64748b}
+  body.tpl-6 .doc-title .basmala{color:#475569;font-family:'Tajawal',sans-serif}
+  body.tpl-6 .doc-title h1{font-family:'Tajawal',sans-serif;color:#1e3a5f;font-size:24px;font-weight:800}
+  body.tpl-6 .meta-row .m{background:#eef3f9;border-color:#c8d3e0;color:#334155}
+  body.tpl-6 .meta-row .m b{color:#1e3a5f}
+  body.tpl-6 .doc-para,body.tpl-6 .rules ol{color:#334155}
+  body.tpl-6 .fcell b,body.tpl-6 .doc-para .lead,body.tpl-6 .agree-line{color:#1e3a5f}
+  body.tpl-6 .agree-line .orn{color:#1e3a5f}
+  body.tpl-6 .fill{border-bottom-color:#94a3b8}
+  body.tpl-6 .notes-title{background:#eef3f9;border-right:4px solid #1e3a5f;color:#1e3a5f;border-radius:4px;font-family:'Tajawal',sans-serif}
+  body.tpl-6 .notes-box{border-color:#94a3b8;background:#fbfdff;border-radius:8px}
+  body.tpl-6 .rules li::marker{color:#1e3a5f}
+  body.tpl-6 .sign-grid .box{background:none;border-top:2.5px solid #1e3a5f;border-radius:0}
+  body.tpl-6 .sign-grid .who{color:#1e3a5f}
+  body.tpl-6 .sign-space{border-bottom-color:#94a3b8}
+  body.tpl-6 .sign-name{color:#334155}
+  body.tpl-6 .sign-label,body.tpl-6 .sign-role{color:#64748b}
+  body.tpl-6 .paper-footer{color:#475569;border-top:2px solid #c8d3e0}
+
+  /* ============================================================
+     النموذج ٧ — المخطط الهندسي (Technical Drawing)
+     ============================================================ */
+  body.tpl-7 .paper{background:#fbfcfe;padding:14px}
+  body.tpl-7 .paper-inner{
+    border:1.5px solid #2b4c6f;outline:1px dashed #7c99b6;outline-offset:6px;
+    background-image:
+      linear-gradient(#e9eff6 1px,transparent 1px),
+      linear-gradient(90deg,#e9eff6 1px,transparent 1px);
+    background-size:22px 22px;background-position:center top;
+  }
+  body.tpl-7 .corner{border-color:#2b4c6f}
+  body.tpl-7 .watermark{color:#2b4c6f;opacity:.05;font-family:'Tajawal',sans-serif}
+  body.tpl-7 .letterhead{border-bottom:1.5px solid #2b4c6f;padding-bottom:12px}
+  body.tpl-7 .letterhead .ornament{color:#2b4c6f;letter-spacing:16px}
+  body.tpl-7 .letterhead .company-name{
+    font-family:'Tajawal',sans-serif;background:none;-webkit-text-fill-color:#2b4c6f;color:#2b4c6f;
+    font-size:30px;font-weight:800;letter-spacing:2px;
+  }
+  body.tpl-7 .letterhead .en-name,body.tpl-7 .letterhead .tagline{color:#5b7ea3;letter-spacing:3px}
+  body.tpl-7 .gold-divider{color:#2b4c6f}
+  body.tpl-7 .doc-title .basmala{color:#5b7ea3;font-family:'Tajawal',sans-serif}
+  body.tpl-7 .doc-title h1{
+    font-family:'Tajawal',sans-serif;color:#2b4c6f;font-size:24px;font-weight:800;letter-spacing:5px;
+  }
+  body.tpl-7 .meta-row .m{background:#f2f6fb;border-color:#b8c9dd;border-radius:2px;color:#33465c}
+  body.tpl-7 .meta-row .m b{color:#2b4c6f}
+  body.tpl-7 .doc-para,body.tpl-7 .rules ol{color:#33465c}
+  body.tpl-7 .fcell b,body.tpl-7 .doc-para .lead,body.tpl-7 .agree-line{color:#2b4c6f}
+  body.tpl-7 .agree-line .orn{color:#2b4c6f}
+  body.tpl-7 .fill{border-bottom-color:#7c99b6}
+  body.tpl-7 .notes-title{background:#eaf1f8;border-right:4px solid #2b4c6f;color:#2b4c6f;border-radius:2px;font-family:'Tajawal',sans-serif}
+  body.tpl-7 .notes-box{border:1.5px dashed #7c99b6;background:rgba(255,255,255,.75);border-radius:2px}
+  body.tpl-7 .rules li::marker{color:#2b4c6f}
+  body.tpl-7 .sign-grid .box{background:none;border-top:2px solid #2b4c6f;border-radius:0}
+  body.tpl-7 .sign-grid .who{color:#2b4c6f}
+  body.tpl-7 .sign-space{border-bottom-color:#7c99b6}
+  body.tpl-7 .sign-name{color:#33465c}
+  body.tpl-7 .sign-label,body.tpl-7 .sign-role{color:#7c99b6}
+  body.tpl-7 .paper-footer{color:#5b7ea3;border-top:1.5px solid #2b4c6f}
+
+  /* ============================================================
+     النموذج ٨ — الجريدة الرسمية (Editorial)
+     ============================================================ */
+  body.tpl-8 .paper{background:#fff;padding:10px}
+  body.tpl-8 .paper-inner{
+    border:none;border-top:6px double #111;border-bottom:6px double #111;
+    border-radius:0;background:#fff;padding:36px 42px;
+  }
+  body.tpl-8 .corner,body.tpl-8 .watermark,body.tpl-8 .letterhead .ornament,body.tpl-8 .gold-divider{display:none}
+  body.tpl-8 .letterhead{border-bottom:1px solid #111;padding-bottom:12px}
+  body.tpl-8 .letterhead .company-name{
+    font-family:'Amiri',serif;background:none;-webkit-text-fill-color:#111;color:#111;
+    font-size:38px;font-weight:700;
+  }
+  body.tpl-8 .letterhead .en-name{color:#555;letter-spacing:6px}
+  body.tpl-8 .letterhead .tagline{color:#444;font-family:'Amiri',serif}
+  body.tpl-8 .doc-title .basmala{color:#333}
+  body.tpl-8 .doc-title h1{
+    font-family:'Amiri',serif;color:#111;font-size:30px;font-weight:700;
+    border-top:1px solid #111;border-bottom:1px solid #111;display:inline-block;
+    padding:4px 30px;margin-top:6px;
+  }
+  body.tpl-8 .meta-row .m{
+    background:none;border:none;border-radius:0;border-right:1px solid #999;color:#333;padding:0 12px;
+    font-family:'Amiri',serif;
+  }
+  body.tpl-8 .meta-row .m:last-child{border-right:none}
+  body.tpl-8 .meta-row .m b{color:#111}
+  body.tpl-8 .doc-para,body.tpl-8 .rules ol{color:#222}
+  body.tpl-8 .fcell b,body.tpl-8 .doc-para .lead,body.tpl-8 .agree-line{color:#111}
+  body.tpl-8 .agree-line .orn{color:#111}
+  body.tpl-8 .fill{border-bottom-color:#777}
+  body.tpl-8 .notes-title{
+    font-family:'Amiri',serif;background:none;border-right:none;border-bottom:1px solid #111;
+    color:#111;border-radius:0;padding:2px 0;font-size:17px;
+  }
+  body.tpl-8 .notes-box{border:1px dashed #555;border-radius:0;background:#fff}
+  body.tpl-8 .rules li::marker{color:#111}
+  body.tpl-8 .sign-grid .box{background:none;border-top:1px solid #111;border-radius:0}
+  body.tpl-8 .sign-grid .who{color:#111;font-family:'Amiri',serif}
+  body.tpl-8 .sign-space{border-bottom-color:#777}
+  body.tpl-8 .sign-name{color:#111}
+  body.tpl-8 .sign-label,body.tpl-8 .sign-role{color:#555}
+  body.tpl-8 .paper-footer{color:#333;border-top:1px solid #111}
+
+  /* ============================================================
+     النموذج ٩ — الزجاجي العصري (Modern Gradient)
+     ============================================================ */
+  body.tpl-9{
+    background:linear-gradient(135deg,#0f766e 0%,#115e59 45%,#0b3b34 100%);
+  }
+  body.tpl-9 .app-header{
+    background:rgba(6,25,22,.85);backdrop-filter:blur(8px);
+  }
+  body.tpl-9 .paper{background:transparent;box-shadow:none;padding:0}
+  body.tpl-9 .paper-inner{
+    border:none;border-radius:24px;
+    background:linear-gradient(160deg,#ffffff,#f0faf8);
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+    padding:40px 44px;
+  }
+  body.tpl-9 .corner{display:none}
+  body.tpl-9 .watermark{color:#0d9488;opacity:.05;font-family:'Tajawal',sans-serif}
+  body.tpl-9 .letterhead{border-bottom:none;padding-bottom:10px;margin-bottom:14px}
+  body.tpl-9 .letterhead .ornament{color:#0d9488;letter-spacing:12px}
+  body.tpl-9 .letterhead .company-name{
+    font-family:'Tajawal',sans-serif;
+    background:linear-gradient(135deg,#0d9488,#0f766e 60%,#134e4a);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#0f766e;
+    font-size:34px;font-weight:800;
+  }
+  body.tpl-9 .letterhead .en-name{color:#5f8d85}
+  body.tpl-9 .letterhead .tagline{color:#0d9488}
+  body.tpl-9 .gold-divider{color:#14b8a6}
+  body.tpl-9 .gold-divider::before,body.tpl-9 .gold-divider::after{
+    background:linear-gradient(90deg,transparent,#14b8a6,transparent);
+  }
+  body.tpl-9 .doc-title .basmala{color:#3f6a62;font-family:'Tajawal',sans-serif}
+  body.tpl-9 .doc-title h1{
+    font-family:'Tajawal',sans-serif;
+    background:linear-gradient(135deg,#0d9488,#0f766e);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#0f766e;
+    font-size:26px;font-weight:800;
+  }
+  body.tpl-9 .meta-row .m{background:#e6f7f4;border-color:#b7e6dd;color:#134e4a}
+  body.tpl-9 .meta-row .m b{color:#0d9488}
+  body.tpl-9 .doc-para{color:#2f4f49}
+  body.tpl-9 .fcell b,body.tpl-9 .doc-para .lead{color:#0f766e}
+  body.tpl-9 .agree-line{color:#0f766e}
+  body.tpl-9 .agree-line .orn{color:#14b8a6}
+  body.tpl-9 .fill{border-bottom-color:#5fa8a0}
+  body.tpl-9 .notes-title{
+    background:linear-gradient(90deg,#0d9488,#0f766e);color:#fff;border-right:none;border-radius:12px;
+    font-family:'Tajawal',sans-serif;
+  }
+  body.tpl-9 .notes-box{border:1.5px dashed #7ccbc0;background:#fff;border-radius:14px}
+  body.tpl-9 .rules,body.tpl-9 .rules ol{color:#2f4f49}
+  body.tpl-9 .rules li::marker{color:#0d9488}
+  body.tpl-9 .sign-grid .box{background:linear-gradient(180deg,#f2fbf9,transparent);border-top:3px solid #0d9488;border-radius:0 0 16px 16px}
+  body.tpl-9 .sign-grid .who{color:#0f766e}
+  body.tpl-9 .sign-space{border-bottom-color:#5fa8a0}
+  body.tpl-9 .sign-name{color:#134e4a}
+  body.tpl-9 .sign-label,body.tpl-9 .sign-role{color:#5f8d85}
+  body.tpl-9 .paper-footer{color:#3f6a62;border-top:none}
+
+  /* ============================================================
+     النموذج ١٠ — النقش الإسلامي (Islamic Ornament)
+     ============================================================ */
+  body.tpl-10 .paper{background:#fbf7ec;padding:20px}
+  body.tpl-10 .paper-inner{
+    border:3px solid #a97e12;
+    outline:3px double #c9a227;outline-offset:7px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(169,126,18,.09), transparent 70%);
+    padding:36px 40px 32px;
+  }
+  body.tpl-10 .corner{border-color:#a97e12}
+  body.tpl-10 .watermark{color:#0c3b34;opacity:.05;font-family:'Reem Kufi',sans-serif}
+  body.tpl-10 .letterhead{border-bottom:none;padding-bottom:10px}
+  body.tpl-10 .letterhead .ornament{color:#0c3b34;letter-spacing:18px;font-size:15px}
+  body.tpl-10 .letterhead .company-name{
+    font-family:'Reem Kufi',sans-serif;font-size:34px;font-weight:700;
+    background:linear-gradient(135deg,#0c3b34 20%,#a97e12 55%,#0c3b34 90%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#0c3b34;
+  }
+  body.tpl-10 .letterhead .en-name{color:#6b5b23}
+  body.tpl-10 .letterhead .tagline{color:#0c3b34;letter-spacing:2px}
+  body.tpl-10 .gold-divider{color:#a97e12}
+  body.tpl-10 .doc-title .basmala{color:#4a4a35;font-family:'Reem Kufi',sans-serif}
+  body.tpl-10 .doc-title h1{
+    font-family:'Reem Kufi',sans-serif;color:#0c3b34;font-size:26px;font-weight:700;
+    border-top:1px solid #c9a227;border-bottom:1px solid #c9a227;
+    display:inline-block;padding:4px 34px;
+  }
+  body.tpl-10 .meta-row .m{background:#f5f0de;border-color:#d9c58a;color:#33403a}
+  body.tpl-10 .meta-row .m b{color:#0c3b34}
+  body.tpl-10 .doc-para,body.tpl-10 .rules ol{color:#3a3a2a}
+  body.tpl-10 .fcell b,body.tpl-10 .doc-para .lead{color:#0c3b34}
+  body.tpl-10 .agree-line{font-family:'Reem Kufi',sans-serif;color:#0c3b34}
+  body.tpl-10 .agree-line .orn{color:#a97e12}
+  body.tpl-10 .fill{border-bottom-color:#a08c50}
+  body.tpl-10 .notes-title{
+    font-family:'Reem Kufi',sans-serif;
+    background:#0c3b34;color:#e9cf7e;border-right:4px solid #a97e12;border-radius:8px;
+  }
+  body.tpl-10 .notes-box{border:1.5px dashed #c3b280;background:#fffef9;border-radius:4px}
+  body.tpl-10 .rules li::marker{color:#a97e12}
+  body.tpl-10 .sign-grid .box{background:linear-gradient(180deg,rgba(245,240,222,.6),transparent);border-top:2.5px solid #0c3b34;border-radius:0 0 4px 4px}
+  body.tpl-10 .sign-grid .who{color:#0c3b34;font-family:'Reem Kufi',sans-serif}
+  body.tpl-10 .sign-space{border-bottom-color:#a08c50}
+  body.tpl-10 .sign-name{color:#33403a}
+  body.tpl-10 .sign-label,body.tpl-10 .sign-role{color:#6b5b23}
+  body.tpl-10 .paper-footer{color:#0c3b34;border-top:1px solid #d9c58a}
+
+  /* ============================================================
+     النموذج ١١ — زيد الأصلي ⭐ طباعة 100% مثل العقد المطبوع
+     ============================================================ */
+  body.tpl-11 .paper{background:#fff;padding:8px}
+  body.tpl-11 .paper-inner{border:none;padding:14px 0 0;background:#fff}
+  body.tpl-11 .paper-inner>*:not(.brand-band):not(.watermark2){padding-right:26px;padding-left:26px}
+  body.tpl-11 .brand-band{background:#0d0d0d;margin:0 0 16px;padding:16px 26px}
+  body.tpl-11 .watermark2{display:flex;color:#000}
+  body.tpl-11 .swoosh{color:#0090d4}
+  body.tpl-11 .swoosh .sw2{stroke:#111}
+  body.tpl-11 .doc-title{display:none}
+  body.tpl-11 .top-meta{justify-content:flex-start;margin-bottom:12px}
+  body.tpl-11 .meta-row .m{background:none;border:none;border-radius:0;color:#111;padding:0 0 2px;font-weight:700}
+  body.tpl-11 .meta-row .m b{color:#111}
+  body.tpl-11 .frow{font-size:14px}
+  body.tpl-11 .fcell{color:#111}
+  body.tpl-11 .fcell b,body.tpl-11 .doc-para .lead{color:#111}
+  body.tpl-11 .agree-line{
+    color:#0090d4;font-style:italic;font-size:20px;font-weight:800;
+    margin:14px 0 10px;font-family:'Tajawal',sans-serif;
+  }
+  body.tpl-11 .agree-line .orn{display:none}
+  body.tpl-11 .fill{border-bottom-color:#8a8a8a;color:#111}
+  body.tpl-11 .doc-para,body.tpl-11 .rules ol{color:#111;font-size:14px}
+  body.tpl-11 .notes-title{
+    background:none;border-right:none;color:#d40000;border-radius:0;
+    font-size:16.5px;padding:0;margin:12px 0 6px;font-weight:800;
+  }
+  body.tpl-11 .notes-box{border:none;border-bottom:1.5px dotted #8a8a8a;border-radius:0;background:#fff;min-height:24px}
+  body.tpl-11 .rules li::marker{color:#d40000}
+  body.tpl-11 .sign-grid{margin-top:26px}
+  body.tpl-11 .sign-grid .box{background:none;border-top:none;padding-top:4px}
+  body.tpl-11 .sign-grid .who{color:#111;font-size:13.5px}
+  body.tpl-11 .sign-space{height:30px;border-bottom-color:#8a8a8a}
+  body.tpl-11 .sign-label{display:none}
+  body.tpl-11 .sign-name{color:#111;font-size:14px;margin-top:8px}
+  body.tpl-11 .sign-role{color:#555}
+  body.tpl-11 .paper-footer{
+    background:#0d0d0d;color:#fff;border-top:none;margin-top:22px;
+    padding:13px 26px;font-size:12.5px;justify-content:space-between;
+  }
+
+  /* ============================================================
+     النموذج ١٢ — زيد أزرق (ترويسة زرقاء)
+     ============================================================ */
+  body.tpl-12 .paper{background:#fff;padding:12px}
+  body.tpl-12 .paper-inner{border:1px solid #d3e3f1;border-radius:4px;padding:30px 34px 26px;background:#fff}
+  body.tpl-12 .brand-band{background:linear-gradient(135deg,#0077c8,#005b96);margin:-30px -34px 20px}
+  body.tpl-12 .watermark2{display:flex;color:#005b96}
+  body.tpl-12 .swoosh{color:#0077c8}
+  body.tpl-12 .swoosh .sw2{stroke:#94a3b8}
+  body.tpl-12 .doc-title h1{color:#005b96;font-family:'Tajawal',sans-serif}
+  body.tpl-12 .meta-row .m{background:#eaf4fb;border-color:#c2dcee;color:#0c3d5c}
+  body.tpl-12 .meta-row .m b{color:#0077c8}
+  body.tpl-12 .fcell b,body.tpl-12 .doc-para .lead{color:#005b96}
+  body.tpl-12 .agree-line{color:#0077c8;font-family:'Tajawal',sans-serif}
+  body.tpl-12 .fill{border-bottom-color:#7aa7c7}
+  body.tpl-12 .notes-title{background:#eaf4fb;border-right:4px solid #0077c8;color:#005b96}
+  body.tpl-12 .notes-box{border-color:#9cc4e0;background:#fbfdff}
+  body.tpl-12 .rules li::marker{color:#0077c8}
+  body.tpl-12 .sign-grid .box{border-top-color:#0077c8;background:linear-gradient(180deg,rgba(234,244,251,.6),transparent)}
+  body.tpl-12 .sign-grid .who{color:#005b96}
+  body.tpl-12 .sign-space{border-bottom-color:#7aa7c7}
+  body.tpl-12 .paper-footer{background:#005b96;color:#fff;border-top:none;border-radius:0 0 4px 4px}
+
+  /* ============================================================
+     النموذج ١٣ — زيد عصري (أبيض / سماوي فلات)
+     ============================================================ */
+  body.tpl-13 .paper{background:#f4f9fd;padding:14px}
+  body.tpl-13 .paper-inner{border:none;border-radius:14px;padding:0;background:#fff;overflow:hidden;box-shadow:0 14px 34px rgba(2,90,150,.14)}
+  body.tpl-13 .brand-band{background:#fff;border-bottom:4px solid #38bdf8;margin:0;padding:18px 28px}
+  body.tpl-13 .bb-logo .bb-word{color:#0ea5e9}
+  body.tpl-13 .bb-ar{color:#0f172a}
+  body.tpl-13 .bb-en{color:#38bdf8}
+  body.tpl-13 .watermark2{display:flex;color:#0ea5e9;opacity:.04}
+  body.tpl-13 .swoosh{color:#38bdf8}
+  body.tpl-13 .swoosh .sw2{stroke:#bae6fd}
+  body.tpl-13 .paper-inner>*:not(.brand-band):not(.watermark2){padding-right:28px;padding-left:28px}
+  body.tpl-13 .letterhead{display:none}
+  body.tpl-13 .doc-title h1{color:#0c4a6e;font-family:'Tajawal',sans-serif;font-size:24px}
+  body.tpl-13 .doc-title .basmala{color:#64748b;font-family:'Tajawal',sans-serif}
+  body.tpl-13 .meta-row .m{background:#f0f9ff;border-color:#bae6fd;color:#075985}
+  body.tpl-13 .meta-row .m b{color:#0ea5e9}
+  body.tpl-13 .fcell b,body.tpl-13 .doc-para .lead{color:#0c4a6e}
+  body.tpl-13 .agree-line{color:#0ea5e9;font-family:'Tajawal',sans-serif}
+  body.tpl-13 .agree-line .orn{color:#7dd3fc}
+  body.tpl-13 .fill{border-bottom-color:#7dd3fc}
+  body.tpl-13 .notes-title{background:#f0f9ff;border-right:4px solid #38bdf8;color:#0c4a6e;border-radius:10px}
+  body.tpl-13 .notes-box{border-color:#bae6fd;background:#fbfeff}
+  body.tpl-13 .rules li::marker{color:#0ea5e9}
+  body.tpl-13 .sign-grid .box{border-top-color:#38bdf8;background:linear-gradient(180deg,rgba(240,249,255,.7),transparent);border-radius:0 0 12px 12px}
+  body.tpl-13 .sign-grid .who{color:#0c4a6e}
+  body.tpl-13 .sign-space{border-bottom-color:#7dd3fc}
+  body.tpl-13 .sign-name{color:#0f172a}
+  body.tpl-13 .paper-footer{background:#0ea5e9;color:#fff;border-top:none;margin:24px -28px 0;padding:12px 28px}
+
+  /* ============================================================
+     النموذج ١٤ — زيد ليلي (كحلي / سماوي داكن)
+     ============================================================ */
+  body.tpl-14 .paper{background:#0b1e33;padding:12px}
+  body.tpl-14 .paper-inner{border:1px solid #1e3a5f;border-radius:6px;padding:0;background:#0e2438;overflow:hidden}
+  body.tpl-14 .brand-band{background:#081626;border-bottom:2px solid #22d3ee;margin:0;padding:18px 28px}
+  body.tpl-14 .bb-logo .bb-word{color:#e2f4fb}
+  body.tpl-14 .bb-ar{color:#fff}
+  body.tpl-14 .bb-en{color:#22d3ee}
+  body.tpl-14 .watermark2{display:flex;color:#22d3ee;opacity:.05}
+  body.tpl-14 .swoosh{color:#22d3ee}
+  body.tpl-14 .swoosh .sw2{stroke:#0e7490}
+  body.tpl-14 .paper-inner>*:not(.brand-band):not(.watermark2){padding-right:28px;padding-left:28px}
+  body.tpl-14 .letterhead{display:none}
+  body.tpl-14 .doc-title .basmala{color:#7dd3fc;font-family:'Tajawal',sans-serif}
+  body.tpl-14 .doc-title h1{color:#a5f3fc;font-family:'Tajawal',sans-serif;font-size:24px}
+  body.tpl-14 .meta-row .m{background:#123252;border-color:#1e4a73;color:#bae6fd}
+  body.tpl-14 .meta-row .m b{color:#22d3ee}
+  body.tpl-14 .doc-para,body.tpl-14 .rules ol{color:#dbeefc}
+  body.tpl-14 .fcell b,body.tpl-14 .doc-para .lead{color:#67e8f9}
+  body.tpl-14 .agree-line{color:#22d3ee;font-family:'Tajawal',sans-serif}
+  body.tpl-14 .agree-line .orn{color:#0e7490}
+  body.tpl-14 .fill{border-bottom-color:#38bdf8;color:#e2f4fb}
+  body.tpl-14 .notes-title{background:#123252;border-right:4px solid #22d3ee;color:#a5f3fc;border-radius:10px}
+  body.tpl-14 .notes-box{border-color:#1e4a73;background:#0b1e33;color:#dbeefc}
+  body.tpl-14 .rules li::marker{color:#22d3ee}
+  body.tpl-14 .sign-grid .box{border-top-color:#22d3ee;background:linear-gradient(180deg,rgba(34,211,238,.08),transparent);border-radius:0 0 10px 10px}
+  body.tpl-14 .sign-grid .who{color:#a5f3fc}
+  body.tpl-14 .sign-space{border-bottom-color:#38bdf8}
+  body.tpl-14 .sign-name{color:#e2f4fb}
+  body.tpl-14 .sign-label,body.tpl-14 .sign-role{color:#6fa8c9}
+  body.tpl-14 .paper-footer{background:#081626;color:#9fd3ea;border-top:1px solid #1e3a5f;margin:24px -28px 0;padding:12px 28px}
+
+  /* ============================================================
+     النموذج ١٥ — زيد نيون (أسود نيون)
+     ============================================================ */
+  body.tpl-15 .paper{background:#050505;padding:12px}
+  body.tpl-15 .paper-inner{border:1px solid #164e63;border-radius:6px;padding:0;background:#0a0f14;overflow:hidden}
+  body.tpl-15 .brand-band{background:#000;border-bottom:2px solid #00e5ff;margin:0;padding:18px 28px;box-shadow:0 0 24px rgba(0,229,255,.25)}
+  body.tpl-15 .bb-logo .bb-word{color:#fff;text-shadow:0 0 14px rgba(0,229,255,.8)}
+  body.tpl-15 .bb-ar{color:#e0faff;text-shadow:0 0 10px rgba(0,229,255,.5)}
+  body.tpl-15 .bb-en{color:#00e5ff;text-shadow:0 0 10px rgba(0,229,255,.7)}
+  body.tpl-15 .watermark2{display:flex;color:#00e5ff;opacity:.05}
+  body.tpl-15 .swoosh{color:#00e5ff}
+  body.tpl-15 .swoosh .sw2{stroke:#155e75}
+  body.tpl-15 .paper-inner>*:not(.brand-band):not(.watermark2){padding-right:28px;padding-left:28px}
+  body.tpl-15 .letterhead{display:none}
+  body.tpl-15 .doc-title .basmala{color:#67e8f9;font-family:'Tajawal',sans-serif}
+  body.tpl-15 .doc-title h1{color:#00e5ff;font-family:'Tajawal',sans-serif;font-size:24px;text-shadow:0 0 16px rgba(0,229,255,.45)}
+  body.tpl-15 .meta-row .m{background:#0b1a22;border-color:#164e63;color:#a5f3fc}
+  body.tpl-15 .meta-row .m b{color:#00e5ff}
+  body.tpl-15 .doc-para,body.tpl-15 .rules ol{color:#cbe9f5}
+  body.tpl-15 .fcell b,body.tpl-15 .doc-para .lead{color:#22d3ee}
+  body.tpl-15 .agree-line{color:#00e5ff;font-family:'Tajawal',sans-serif;text-shadow:0 0 12px rgba(0,229,255,.4)}
+  body.tpl-15 .agree-line .orn{color:#155e75}
+  body.tpl-15 .fill{border-bottom-color:#0891b2;color:#e0faff}
+  body.tpl-15 .notes-title{background:#0b1a22;border-right:4px solid #00e5ff;color:#a5f3fc;border-radius:10px}
+  body.tpl-15 .notes-box{border-color:#164e63;background:#0a0f14;color:#cbe9f5}
+  body.tpl-15 .rules li::marker{color:#00e5ff}
+  body.tpl-15 .sign-grid .box{border-top-color:#00e5ff;background:linear-gradient(180deg,rgba(0,229,255,.06),transparent);border-radius:0 0 10px 10px}
+  body.tpl-15 .sign-grid .who{color:#a5f3fc}
+  body.tpl-15 .sign-space{border-bottom-color:#0891b2}
+  body.tpl-15 .sign-name{color:#e0faff}
+  body.tpl-15 .sign-label,body.tpl-15 .sign-role{color:#4e7f93}
+  body.tpl-15 .paper-footer{background:#000;color:#7dd3fc;border-top:1px solid #164e63;margin:24px -28px 0;padding:12px 28px}
+
+  /* ============================================================
+     النموذج ١٦ — أحمر فيراري
+     ============================================================ */
+  body.tpl-16 .paper{background:#fff;padding:14px}
+  body.tpl-16 .paper-inner{
+    border:3px double #7f1d1d;border-radius:4px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(208,0,0,.07), transparent 70%);
+  }
+  body.tpl-16 .corner{border-color:#a30000}
+  body.tpl-16 .watermark{color:#a30000;opacity:.05}
+  body.tpl-16 .letterhead{border-bottom-color:#eecaca}
+  body.tpl-16 .letterhead .ornament{color:#a30000}
+  body.tpl-16 .letterhead .company-name{
+    background:linear-gradient(135deg,#7f1d1d 10%,#d00000 50%,#7f1d1d 90%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  body.tpl-16 .letterhead .en-name,body.tpl-16 .letterhead .tagline{color:#a30000}
+  body.tpl-16 .gold-divider{color:#a30000}
+  body.tpl-16 .gold-divider::before,body.tpl-16 .gold-divider::after{background:linear-gradient(90deg,transparent,#d00000,transparent)}
+  body.tpl-16 .doc-title .basmala{color:#5c2a2a}
+  body.tpl-16 .doc-title h1{color:#7f1d1d}
+  body.tpl-16 .meta-row .m{background:#fdeaea;border-color:#f1c1c1;color:#4a1a1a}
+  body.tpl-16 .meta-row .m b{color:#a30000}
+  body.tpl-16 .doc-para,body.tpl-16 .rules ol{color:#3a2323}
+  body.tpl-16 .fcell b,body.tpl-16 .doc-para .lead{color:#7f1d1d}
+  body.tpl-16 .agree-line{color:#7f1d1d}
+  body.tpl-16 .agree-line .orn{color:#d00000}
+  body.tpl-16 .fill{border-bottom-color:#c98a8a}
+  body.tpl-16 .notes-title{background:linear-gradient(90deg,#fdeaea,rgba(253,234,234,0));color:#7f1d1d;border-right-color:#a30000}
+  body.tpl-16 .notes-box{border-color:#d98888;background:#fffafa}
+  body.tpl-16 .rules li::marker{color:#a30000}
+  body.tpl-16 .sign-grid .box{border-top-color:#a30000;background:linear-gradient(180deg,rgba(253,234,234,.45),transparent)}
+  body.tpl-16 .sign-grid .who{color:#7f1d1d}
+  body.tpl-16 .sign-space{border-bottom-color:#c98a8a}
+  body.tpl-16 .sign-name{color:#4a1a1a}
+  body.tpl-16 .sign-label,body.tpl-16 .sign-role{color:#9b6a6a}
+  body.tpl-16 .paper-footer{color:#7f1d1d;border-top-color:#e7b6b6}
+
+  /* ============================================================
+     النموذج ١٧ — بنفسجي ملكي
+     ============================================================ */
+  body.tpl-17 .paper{background:#fdfcfe;padding:16px}
+  body.tpl-17 .paper-inner{
+    border:3px double #4c1d95;border-radius:4px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(124,58,237,.08), transparent 70%);
+  }
+  body.tpl-17 .corner{border-color:#4c1d95}
+  body.tpl-17 .watermark{color:#4c1d95;opacity:.05}
+  body.tpl-17 .letterhead{border-bottom-color:#d6c7f7}
+  body.tpl-17 .letterhead .ornament{color:#d4af37}
+  body.tpl-17 .letterhead .company-name{
+    background:linear-gradient(135deg,#4c1d95 10%,#7c3aed 50%,#4c1d95 90%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  body.tpl-17 .letterhead .en-name,body.tpl-17 .letterhead .tagline{color:#6d28d9}
+  body.tpl-17 .gold-divider{color:#d4af37}
+  body.tpl-17 .doc-title .basmala{color:#4a3a6b}
+  body.tpl-17 .doc-title h1{color:#4c1d95}
+  body.tpl-17 .meta-row .m{background:#f3eefe;border-color:#d6c7f7;color:#2e1a4d}
+  body.tpl-17 .meta-row .m b{color:#4c1d95}
+  body.tpl-17 .doc-para,body.tpl-17 .rules ol{color:#31214d}
+  body.tpl-17 .fcell b,body.tpl-17 .doc-para .lead{color:#4c1d95}
+  body.tpl-17 .agree-line{color:#4c1d95}
+  body.tpl-17 .agree-line .orn{color:#d4af37}
+  body.tpl-17 .fill{border-bottom-color:#a48cd0}
+  body.tpl-17 .notes-title{background:linear-gradient(90deg,#f3eefe,rgba(243,238,254,0));color:#4c1d95;border-right-color:#d4af37}
+  body.tpl-17 .notes-box{border-color:#c4b3ea;background:#fbfaff}
+  body.tpl-17 .rules li::marker{color:#d4af37}
+  body.tpl-17 .sign-grid .box{border-top-color:#4c1d95;background:linear-gradient(180deg,rgba(243,238,254,.5),transparent)}
+  body.tpl-17 .sign-grid .who{color:#4c1d95}
+  body.tpl-17 .sign-space{border-bottom-color:#a48cd0}
+  body.tpl-17 .sign-name{color:#2e1a4d}
+  body.tpl-17 .sign-label,body.tpl-17 .sign-role{color:#7a6aa8}
+  body.tpl-17 .paper-footer{color:#4c1d95;border-top-color:#d6c7f7}
+
+  /* ============================================================
+     النموذج ١٨ — فضي كربون
+     ============================================================ */
+  body.tpl-18 .paper{background:#f8f9fa;padding:12px}
+  body.tpl-18 .paper-inner{
+    border:1px solid #d1d5db;border-radius:6px;background:#fff;
+    box-shadow:inset 0 4px 0 #374151;
+  }
+  body.tpl-18 .corner,body.tpl-18 .watermark,body.tpl-18 .letterhead .ornament,body.tpl-18 .gold-divider{display:none}
+  body.tpl-18 .letterhead{border-bottom:2px solid #374151;padding-bottom:14px}
+  body.tpl-18 .letterhead .company-name{
+    font-family:'Tajawal',sans-serif;
+    background:linear-gradient(135deg,#111827,#6b7280);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#111827;
+    font-size:32px;font-weight:800;letter-spacing:1px;
+  }
+  body.tpl-18 .letterhead .en-name,body.tpl-18 .letterhead .tagline{color:#6b7280}
+  body.tpl-18 .doc-title .basmala{color:#4b5563;font-family:'Tajawal',sans-serif}
+  body.tpl-18 .doc-title h1{font-family:'Tajawal',sans-serif;color:#111827;font-size:24px;font-weight:800;letter-spacing:2px}
+  body.tpl-18 .meta-row .m{background:#f3f4f6;border-color:#d1d5db;color:#1f2937}
+  body.tpl-18 .meta-row .m b{color:#111827}
+  body.tpl-18 .doc-para,body.tpl-18 .rules ol{color:#374151}
+  body.tpl-18 .fcell b,body.tpl-18 .doc-para .lead,body.tpl-18 .agree-line{color:#111827}
+  body.tpl-18 .agree-line .orn{color:#6b7280}
+  body.tpl-18 .fill{border-bottom-color:#9ca3af}
+  body.tpl-18 .notes-title{background:#f3f4f6;border-right:4px solid #374151;color:#111827;border-radius:4px;font-family:'Tajawal',sans-serif}
+  body.tpl-18 .notes-box{border-color:#9ca3af;background:#fafafa;border-radius:6px}
+  body.tpl-18 .rules li::marker{color:#111827}
+  body.tpl-18 .sign-grid .box{background:linear-gradient(180deg,#f9fafb,transparent);border-top:2.5px solid #374151;border-radius:0}
+  body.tpl-18 .sign-grid .who{color:#111827}
+  body.tpl-18 .sign-space{border-bottom-color:#9ca3af}
+  body.tpl-18 .sign-name{color:#111827}
+  body.tpl-18 .sign-label,body.tpl-18 .sign-role{color:#6b7280}
+  body.tpl-18 .paper-footer{color:#4b5563;border-top:2px solid #d1d5db}
+
+  /* ============================================================
+     النموذج ١٩ — زيتوني عسكري
+     ============================================================ */
+  body.tpl-19 .paper{background:#f6f7ee;padding:16px}
+  body.tpl-19 .paper-inner{
+    border:3px double #3f4a1f;border-radius:4px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(85,107,47,.10), transparent 70%);
+  }
+  body.tpl-19 .corner{border-color:#556b2f}
+  body.tpl-19 .watermark{color:#556b2f;opacity:.05}
+  body.tpl-19 .letterhead{border-bottom-color:#ccd8a8}
+  body.tpl-19 .letterhead .ornament{color:#6b7f3a}
+  body.tpl-19 .letterhead .company-name{
+    background:linear-gradient(135deg,#2f3a12 10%,#6b7f3a 50%,#2f3a12 90%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  body.tpl-19 .letterhead .en-name,body.tpl-19 .letterhead .tagline{color:#556b2f}
+  body.tpl-19 .gold-divider{color:#6b7f3a}
+  body.tpl-19 .gold-divider::before,body.tpl-19 .gold-divider::after{background:linear-gradient(90deg,transparent,#6b7f3a,transparent)}
+  body.tpl-19 .doc-title .basmala{color:#4a4d33}
+  body.tpl-19 .doc-title h1{color:#2f3a12}
+  body.tpl-19 .meta-row .m{background:#f3f6e8;border-color:#ccd8a8;color:#2c3316}
+  body.tpl-19 .meta-row .m b{color:#3f4a1f}
+  body.tpl-19 .doc-para,body.tpl-19 .rules ol{color:#333a20}
+  body.tpl-19 .fcell b,body.tpl-19 .doc-para .lead{color:#3f4a1f}
+  body.tpl-19 .agree-line{color:#2f3a12}
+  body.tpl-19 .agree-line .orn{color:#6b7f3a}
+  body.tpl-19 .fill{border-bottom-color:#9aa86b}
+  body.tpl-19 .notes-title{background:linear-gradient(90deg,#f3f6e8,rgba(243,246,232,0));color:#2f3a12;border-right-color:#556b2f}
+  body.tpl-19 .notes-box{border-color:#b3c184;background:#fbfdf3}
+  body.tpl-19 .rules li::marker{color:#556b2f}
+  body.tpl-19 .sign-grid .box{border-top-color:#3f4a1f;background:linear-gradient(180deg,rgba(243,246,232,.55),transparent)}
+  body.tpl-19 .sign-grid .who{color:#2f3a12}
+  body.tpl-19 .sign-space{border-bottom-color:#9aa86b}
+  body.tpl-19 .sign-name{color:#2c3316}
+  body.tpl-19 .sign-label,body.tpl-19 .sign-role{color:#6b7a4a}
+  body.tpl-19 .paper-footer{color:#3f4a1f;border-top-color:#ccd8a8}
+
+  /* ============================================================
+     النموذج ٢٠ — روز ذهبي
+     ============================================================ */
+  body.tpl-20 .paper{background:#fdf8f6;padding:16px}
+  body.tpl-20 .paper-inner{
+    border:3px double #b76e79;border-radius:4px;
+    background:radial-gradient(700px 220px at 50% -60px, rgba(183,110,121,.10), transparent 70%);
+  }
+  body.tpl-20 .corner{border-color:#b76e79}
+  body.tpl-20 .watermark{color:#b76e79;opacity:.05}
+  body.tpl-20 .letterhead{border-bottom-color:#ecc9cd}
+  body.tpl-20 .letterhead .ornament{color:#c98f97}
+  body.tpl-20 .letterhead .company-name{
+    background:linear-gradient(135deg,#8a4d56 10%,#d9a1a8 50%,#8a4d56 90%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  body.tpl-20 .letterhead .en-name,body.tpl-20 .letterhead .tagline{color:#a2676f}
+  body.tpl-20 .gold-divider{color:#c98f97}
+  body.tpl-20 .gold-divider::before,body.tpl-20 .gold-divider::after{background:linear-gradient(90deg,transparent,#d9a1a8,transparent)}
+  body.tpl-20 .doc-title .basmala{color:#6d4a50}
+  body.tpl-20 .doc-title h1{color:#8a4d56}
+  body.tpl-20 .meta-row .m{background:#fbeef0;border-color:#ecc9cd;color:#5a3a40}
+  body.tpl-20 .meta-row .m b{color:#96555f}
+  body.tpl-20 .doc-para,body.tpl-20 .rules ol{color:#4d343a}
+  body.tpl-20 .fcell b,body.tpl-20 .doc-para .lead{color:#8a4d56}
+  body.tpl-20 .agree-line{color:#8a4d56}
+  body.tpl-20 .agree-line .orn{color:#d9a1a8}
+  body.tpl-20 .fill{border-bottom-color:#cfa3a8}
+  body.tpl-20 .notes-title{background:linear-gradient(90deg,#fbeef0,rgba(251,238,240,0));color:#8a4d56;border-right-color:#b76e79}
+  body.tpl-20 .notes-box{border-color:#d9b3b8;background:#fffafa}
+  body.tpl-20 .rules li::marker{color:#b76e79}
+  body.tpl-20 .sign-grid .box{border-top-color:#b76e79;background:linear-gradient(180deg,rgba(251,238,240,.55),transparent);border-radius:0 0 12px 12px}
+  body.tpl-20 .sign-grid .who{color:#8a4d56}
+  body.tpl-20 .sign-space{border-bottom-color:#cfa3a8}
+  body.tpl-20 .sign-name{color:#5a3a40}
+  body.tpl-20 .sign-label,body.tpl-20 .sign-role{color:#a98388}
+  body.tpl-20 .paper-footer{color:#8a4d56;border-top-color:#ecc9cd}
+
+  /* ================= الطباعة ================= */
+  @media print{
+    @page{size:A4 portrait;margin:0}
+    html,body{background:#fff !important;width:210mm}
+    .no-print{display:none !important}
+    .app-header{display:none !important}
+    .layout{display:block;margin:0;padding:0;max-width:none}
+    .paper-wrap{display:block}
+    .paper{
+      box-shadow:none;border-radius:0;
+      width:auto;max-width:none;
+      margin:0;padding:5mm;
+      font-size:13px;line-height:1.9;
+    }
+    .paper-inner{padding:12px 14px}
+    body.zaid .brand-band{margin:0 -14px 12px}
+    body.zaid .paper-inner>*:not(.brand-band):not(.watermark2){padding-right:14px;padding-left:14px}
+    .letterhead .company-name{font-size:24px}
+    .doc-title h1{font-size:18px}
+    .sign-space{height:26px}
+    .frow{gap:3px 16px}
+    .sign-grid,.rules,.paper-footer,.top-meta,.frow{page-break-inside:avoid;break-inside:avoid}
+    /* توحيد الأحجام تحت حجم خط الورقة حتى تشتغل المعايرة لكل نموذج */
+    .paper .frow,.paper .doc-para,.paper .rules{font-size:1.02em !important}
+    .paper .sign-grid .who,.paper .sign-name{font-size:1em !important}
+    .paper .letterhead .company-name{font-size:1.8em !important}
+    .paper .doc-title h1{font-size:1.4em !important}
+    .paper .agree-line{font-size:1.3em !important}
+    .paper .notes-title{font-size:1.12em !important}
+    .paper .paper-footer{font-size:.82em !important}
+    .paper .meta-row .m{font-size:.92em !important}
+    /* حجم خط مخصص لكل نموذج — يُملأ تلقائياً بعد المعايرة */
+        body.tpl-1 .paper{font-size:11.5px}
+    body.tpl-2 .paper{font-size:10.5px}
+    body.tpl-3 .paper{font-size:11.5px}
+    body.tpl-4 .paper{font-size:11px}
+    body.tpl-5 .paper{font-size:11px}
+    body.tpl-6 .paper{font-size:12px}
+    body.tpl-7 .paper{font-size:11.5px}
+    body.tpl-8 .paper{font-size:10.5px}
+    body.tpl-9 .paper{font-size:11px}
+    body.tpl-10 .paper{font-size:10px}
+    body.tpl-11 .paper{font-size:15px}
+    body.tpl-12 .paper{font-size:10.5px}
+    body.tpl-13 .paper{font-size:12px}
+    body.tpl-14 .paper{font-size:12px}
+    body.tpl-15 .paper{font-size:12px}
+    body.tpl-16 .paper{font-size:11.5px}
+    body.tpl-17 .paper{font-size:11.5px}
+    body.tpl-18 .paper{font-size:12px}
+    body.tpl-19 .paper{font-size:11.5px}
+    body.tpl-20 .paper{font-size:11.5px}
+  }
+  @media (max-width: 640px){
+    .paper{padding:10px}
+    .paper-inner{padding:22px 16px}
+    body.zaid .brand-band{margin:-22px -16px 16px;padding:14px 16px}
+    .grid2{grid-template-columns:1fr}
+    .frow{grid-template-columns:1fr}
+    .letterhead .company-name{font-size:28px}
+    .bb-ar{font-size:18px}
+    .bb-logo .bb-word{font-size:24px}
+  }
+</style>
+</head>
+<body class="tpl-1">
+
+<header class="app-header no-print">
+  <div class="brand">
+    <span class="logo">🚘</span>
+    <div>نظام عقود بيع السيارات<small>معارض النجف — ٢٠ نموذج عالمي • الإصدار ٣ ✔ طباعة ممتلئة</small></div>
+  </div>
+  <button class="btn btn-ghost" id="themeBtnR" onclick="toggleTheme()"><span id="themeIconR">🌙</span> <span id="themeTextR">داكن</span></button>
+</header>
+
+<div class="layout">
+
+  <!-- ================= نموذج الإدخال ================= -->
+  <section class="panel no-print">
+    <div class="panel-head">
+      <h2>📝 بيانات العقد</h2>
+      <button class="btn btn-light" onclick="toggleTheme()" style="padding:6px 12px"><span id="themeIconL">🌙</span> <span id="themeTextL">داكن</span></button>
+    </div>
+    <div class="panel-body">
+
+      <div class="tpl-picker">
+        <label>🎨 نمط التصميم — ٢٠ نموذج بطراز كبار مصممي العالم</label>
+        <select id="templateSelect" onchange="setTemplate(this.value)">
+          <option value="1">١ · الذهب الكلاسيكي</option>
+          <option value="2">٢ · السويسري البسيط — Swiss Minimal</option>
+          <option value="3">٣ · الفخامة الليلية — Black &amp; Gold</option>
+          <option value="4">٤ · آرت ديكو — Art Deco</option>
+          <option value="5">٥ · الملكي الأخضر — Royal Emerald</option>
+          <option value="6">٦ · الكوربوريت البحري — Corporate</option>
+          <option value="7">٧ · المخطط الهندسي — Technical</option>
+          <option value="8">٨ · الجريدة الرسمية — Editorial</option>
+          <option value="9">٩ · الزجاجي العصري — Modern Gradient</option>
+          <option value="10">١٠ · النقش الإسلامي — Islamic</option>
+          <option value="11">١١ · ⭐ زيد الأصلي — طباعة 100%</option>
+          <option value="12">١٢ · زيد أزرق — ترويسة زرقاء</option>
+          <option value="13">١٣ · زيد عصري — أبيض/سماوي</option>
+          <option value="14">١٤ · زيد ليلي — كحلي/سماوي</option>
+          <option value="15">١٥ · زيد نيون — أسود نيون</option>
+          <option value="16">١٦ · أحمر فيراري</option>
+          <option value="17">١٧ · بنفسجي ملكي</option>
+          <option value="18">١٨ · فضي كربون</option>
+          <option value="19">١٩ · زيتوني عسكري</option>
+          <option value="20">٢٠ · روز ذهبي</option>
+        </select>
+      </div>
+
+      <fieldset>
+        <legend>🏢 هوية المعرض</legend>
+        <div class="grid1">
+          <div class="field"><label>اسم المعرض / الشركة</label><input id="companyName" value="زيد لتجارة السيارات"></div>
+          <div class="field"><label>العنوان</label><input id="companyAddr" value="النجف | المعارض القديمة | بلوك ٤"></div>
+          <div class="grid2">
+            <div class="field"><label>هاتف المعرض</label><input id="companyPhone" value="07800009500"></div>
+            <div class="field"><label>البريد الإلكتروني</label><input id="companyEmail" value="zaid.car@gmail.com"></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>📄 بيانات عامة</legend>
+        <div class="grid2">
+          <div class="field"><label>رقم العقد</label><input id="no" placeholder="مثال: 1024"></div>
+          <div class="field"><label>اسم المالك الشرعي</label><input id="ownerName" placeholder="مثال: شركة رونق الذهب لتجارة السيارات"></div>
+          <div class="field"><label>سكن المالك الشرعي</label><input id="ownerAddr" placeholder="عنوان سكن المالك الشرعي"></div>
+          <div class="field"><label>التاريخ</label><input id="date" type="date"></div>
+          <div class="field"><label>الوقت</label><input id="time" type="time"></div>
+          <div class="field"><label>اليوم</label><input id="day" placeholder="يُعبّأ تلقائياً"></div>
+          <div class="field"><label>تاريخ الإصدار</label><input id="issueDate" type="date"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>🧍 الطرف الأول (البائع)</legend>
+        <div class="grid2">
+          <div class="field"><label>السيد</label><input id="sellerName" placeholder="اسم البائع"></div>
+          <div class="field"><label>رقم الهوية وجهة الإصدار</label><input id="sellerId" placeholder="أدخل الرقم"></div>
+          <div class="field"><label>المهنة</label><input id="sellerJob" placeholder="المهنة"></div>
+          <div class="field"><label>رقم الهاتف</label><input id="sellerPhone" placeholder="07xxxxxxxxx"></div>
+        </div>
+        <div class="grid1">
+          <div class="field"><label>يسكن</label><input id="sellerAddr" placeholder="المحافظة / المنطقة"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>🧍‍♂️ الطرف الثاني (المشتري)</legend>
+        <div class="grid2">
+          <div class="field"><label>السيد</label><input id="buyerName" placeholder="اسم المشتري"></div>
+          <div class="field"><label>رقم الهوية وجهة الإصدار</label><input id="buyerId" placeholder="أدخل الرقم"></div>
+          <div class="field"><label>المهنة</label><input id="buyerJob" placeholder="المهنة"></div>
+          <div class="field"><label>رقم الهاتف</label><input id="buyerPhone" placeholder="07xxxxxxxxx"></div>
+        </div>
+        <div class="grid1">
+          <div class="field"><label>يسكن</label><input id="buyerAddr" placeholder="المحافظة / المنطقة"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>🚘 بيانات السيارة</legend>
+        <div class="grid2">
+          <div class="field"><label>السيارة المرقمة</label><input id="carNo" placeholder="أدخل الرقم"></div>
+          <div class="field"><label>نوع السيارة</label><input id="carType" placeholder="مثال: صالون / حمل"></div>
+          <div class="field"><label>الموديل</label><input id="carModel" placeholder="مثال: 2021"></div>
+          <div class="field"><label>اللون</label><input id="carColor" placeholder="مثال: أبيض"></div>
+          <div class="field"><label>ماركتها</label><input id="carBrand" placeholder="مثال: تويوتا"></div>
+          <div class="field"><label>رقم الشاصي</label><input id="chassis" placeholder="VIN"></div>
+        </div>
+        <div class="grid1">
+          <div class="field">
+            <label>النوع (خصوصي / أجرة)</label>
+            <select id="usage">
+              <option value="خصوصي">خصوصي</option>
+              <option value="أجرة عامة">أجرة عامة</option>
+              <option value="نقل">نقل</option>
+              <option value="أخرى">أخرى</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>💰 بيانات المبلغ (دينار عراقي)</legend>
+        <div class="grid2">
+          <div class="field"><label>بدل البيع (الإجمالي)</label><input id="total" inputmode="numeric" placeholder="0"></div>
+          <div class="field"><label>مبلغ قبضه البائع (المدفوع)</label><input id="paid" inputmode="numeric" placeholder="0"></div>
+          <div class="field"><label>الباقي (المتبقي)</label><input id="remain" inputmode="numeric" placeholder="يُحتسب تلقائياً"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>📌 ملاحظات</legend>
+        <div class="grid1">
+          <div class="field"><textarea id="notes" placeholder="أي ملاحظات إضافية تُدرج في العقد..."></textarea></div>
+        </div>
+      </fieldset>
+
+      <div class="toolbar">
+        <button class="btn btn-print" onclick="window.print()">🖨️ طباعة العقد</button>
+        <button class="btn btn-danger" onclick="resetAll()">🗑️ تفريغ الحقول</button>
+        <button class="btn btn-accent" onclick="toggleTheme()" style="flex:1;min-width:100%"><span id="themeIconI">🌙</span> <span id="themeTextI">تبديل للوضع الداكن 🌙</span></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ورقة العقد ================= -->
+  <section class="paper-wrap">
+    <div class="paper" id="paper">
+      <div class="paper-inner">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="watermark">❖</div>
+        <div class="watermark2">ZAID CARS</div>
+
+        <div class="brand-band">
+          <div class="bb-logo">
+            <svg viewBox="0 0 120 44" width="104" height="38" aria-hidden="true">
+              <path d="M4 34 Q30 8 62 16 T116 12" stroke="#00aeef" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M8 41 Q44 22 88 30 T118 26" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+            </svg>
+            <span class="bb-word">ZAID CARS</span>
+          </div>
+          <div class="bb-names">
+            <div class="bb-ar">زيد لتجارة السيـــارات</div>
+            <div class="bb-en">ZAID CARS DEALERSHIP</div>
+          </div>
+        </div>
+
+        <div class="letterhead">
+          <div class="ornament">❖ ❖ ❖</div>
+          <div class="company-name" id="o_companyName">زيد لتجارة السيارات</div>
+          <div class="en-name">ZAID CARS DEALERSHIP</div>
+          <div class="tagline">✦ للبيع والشراء والتبديل ✦</div>
+          <div class="gold-divider">✦</div>
+        </div>
+
+        <div class="doc-title">
+          <div class="basmala">بسم الله الرحمن الرحيم</div>
+          <h1>عـقـد بـيـع سـيـارة</h1>
+        </div>
+
+        <div class="top-meta">
+          <div class="meta-row">
+            <span class="m">رقم: <b><span id="o_no">........</span></b></span>
+            <span class="m">التاريخ: <b><span id="o_date">........</span></b></span>
+            <span class="m">الوقت: <b><span id="o_time">........</span></b></span>
+          </div>
+        </div>
+
+        <div class="frow">
+          <div class="fcell"><b>اسم المالك الشرعي:</b> <span class="fill" id="o_ownerName">................</span></div>
+          <div class="fcell"><b>يسكن:</b> <span class="fill" id="o_ownerAddr" style="min-width:150px">................</span></div>
+        </div>
+
+        <div class="frow">
+          <div class="fcell"><b>الطرف الأول (البائع) السيد:</b> <span class="fill" id="o_sellerName">........</span></div>
+          <div class="fcell"><b>يسكن:</b> <span class="fill" id="o_sellerAddr">........</span></div>
+        </div>
+        <div class="frow">
+          <div class="fcell"><b>المهنة:</b> <span class="fill" id="o_sellerJob">........</span> &nbsp; <b>رقم الهاتف:</b> <span class="fill" id="o_sellerPhone">........</span>📞</div>
+          <div class="fcell"><b>رقم الهوية وجهة الإصدار:</b> <span class="fill" id="o_sellerId">........</span></div>
+        </div>
+
+        <div class="frow">
+          <div class="fcell"><b>الطرف الثاني (المشتري) السيد:</b> <span class="fill" id="o_buyerName">........</span></div>
+          <div class="fcell"><b>يسكن:</b> <span class="fill" id="o_buyerAddr">........</span></div>
+        </div>
+        <div class="frow">
+          <div class="fcell"><b>المهنة:</b> <span class="fill" id="o_buyerJob">........</span> &nbsp; <b>رقم الهاتف:</b> <span class="fill" id="o_buyerPhone">........</span>📞</div>
+          <div class="fcell"><b>رقم الهوية وجهة الإصدار:</b> <span class="fill" id="o_buyerId">........</span></div>
+        </div>
+
+        <div class="swoosh" aria-hidden="true">
+          <svg viewBox="0 0 640 26" preserveAspectRatio="none" style="width:100%;height:22px;display:block">
+            <path class="sw1" d="M0 20 Q160 2 320 12 T640 8" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path class="sw2" d="M0 24 Q200 10 420 18 T640 15" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="agree-line">
+          <span class="orn">❖ ❖ ❖</span>
+          عقد الاتفاق بين الطرفين حسب ما يلي
+        </div>
+
+        <div class="doc-para">
+          <span class="lead">١ - باع الطرف الأول للطرف الثاني السيارة المرقمة</span>
+          <span class="fill" id="o_carNo">........</span>
+          <span class="fill" id="o_usage">خصوصي</span>
+          الموديل <span class="fill" id="o_carModel">........</span>
+          اللون <span class="fill" id="o_carColor">........</span>
+          ماركتها <span class="fill" id="o_carBrand">........</span>
+          نوعها <span class="fill" id="o_carType">........</span>
+          رقم الشاصي <span class="fill" id="o_chassis">........</span>
+        </div>
+
+        <div class="doc-para">
+          <span class="lead">يبدل قدره</span>
+          ( <span class="fill" id="o_total">........</span> )
+          وقد قبض البائع مبلغ وقدره
+          ( <span class="fill" id="o_paid">........</span> )
+          والباقي قدره
+          ( <span class="fill" id="o_remain">........</span> )
+          الملاحظات ( <span class="fill" id="o_notes">........</span> )
+        </div>
+
+        <div class="rules">
+          <ol>
+            <li>يتعهد الطرف الأول (البائع) بعدم مديونية العجلة وتسجيلها أصولياً إلى الطرف الثاني (المشتري).</li>
+            <li>على المشتري مراجعة شعبة التسجيل التابعة قبل التوقيع على العقد لغرض التأكد من سلامة الأوراق القانونية ومطابقة الأرقام ولوحات التسجيل.</li>
+            <li>الطرف الأول (البائع) هو المسؤول عن دفع كافة الغرامات المرورية وجميع ما يترتب على السيارة من ديون أو رسوم أو دعاوى في دوائر الدولة أو الأشخاص.</li>
+            <li>العجلة المبيعة بالأجل لا يحق للمشتري التصرف بها بعد إكمال دفع كامل المبلغ لمالكها.</li>
+            <li>
+              نُظِّم هذا العقد بثلاث نسخ وحرِّر بساعة <span class="fill" id="m_time">........</span>
+              من يوم <span class="fill" id="m_day">........</span>
+              بتاريخ <span class="fill" id="m_date">........</span>
+              — تاريخ الإصدار: <span class="fill" id="m_issue">........</span>
+            </li>
+            <li>يعتبر العقد وسطاً في حال عدم الاتفاق.</li>
+            <li>يعتبر العقد نافذاً لمدة شهر من تاريخ تحريره.</li>
+          </ol>
+        </div>
+
+        <div class="sign-grid">
+          <div class="box">
+            <div class="who">الطرف الأول (البائع)</div>
+            <div class="sign-space"></div>
+            <div class="sign-label">التوقيع</div>
+            <div class="sign-name" id="o_sellerName2">................</div>
+            <div class="sign-role">الاسم</div>
+          </div>
+          <div class="box">
+            <div class="who">الطرف الثاني (المشتري)</div>
+            <div class="sign-space"></div>
+            <div class="sign-label">التوقيع</div>
+            <div class="sign-name" id="o_buyerName2">................</div>
+            <div class="sign-role">الاسم</div>
+          </div>
+          <div class="box">
+            <div class="who">الإدارة</div>
+            <div class="sign-space"></div>
+            <div class="sign-label">التوقيع</div>
+            <div class="sign-name" id="o_ownerName2">................</div>
+            <div class="sign-role">الاسم</div>
+          </div>
+        </div>
+
+        <div class="paper-footer">
+          <span>📧 <span id="o_companyEmail">........</span></span>
+          <span>📞 <span id="o_companyPhone">........</span></span>
+          <span>📍 <span id="o_companyAddr">........</span></span>
+          <span>🕒 طُبع بوقت: <span id="o_time2">........</span></span>
+        </div>
+        <span id="o_companyAddr2" style="display:none"></span>
+        <span id="o_day" style="display:none"></span>
+        <span id="o_issueDate" style="display:none"></span>
+
+      </div>
+    </div>
+
+    <div class="paper-actions no-print">
+      <button class="btn btn-print" onclick="window.print()">🖨️ طباعة العقد</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // ⭐ توقيت النجف - العراق (UTC+3)
+  const NAJAF_TZ = 'Asia/Baghdad';
+
+  const ids = [
+    'no','ownerName','sellerName','sellerAddr','sellerPhone','sellerJob','sellerId',
+    'buyerName','buyerAddr','buyerPhone','buyerJob','buyerId',
+    'carNo','carType','carModel','carColor','carBrand','chassis',
+    'total','paid','remain','notes','day',
+    'companyAddr','companyPhone','companyEmail'
+  ];
+
+  // 📅 تاريخ اليوم حسب توقيت النجف - YYYY-MM-DD
+  function todayISO(){
+    const d = new Date();
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: NAJAF_TZ,
+      year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(d);
+    const y = parts.find(p=>p.type==='year').value;
+    const m = parts.find(p=>p.type==='month').value;
+    const dd = parts.find(p=>p.type==='day').value;
+    return `${y}-${m}-${dd}`;
+  }
+
+  // ⏰ الوقت الحالي حسب توقيت النجف - HH:MM
+  function nowTime24(){
+    const d = new Date();
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: NAJAF_TZ,
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }).formatToParts(d);
+    const h = parts.find(p=>p.type==='hour').value;
+    const m = parts.find(p=>p.type==='minute').value;
+    return `${h}:${m}`;
+  }
+
+  // 📆 اسم اليوم حسب توقيت النجف
+  function todayDayName(){
+    const d = new Date();
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: NAJAF_TZ, weekday: 'short'
+    }).format(d);
+    const map = { 'Sun':'الأحد','Mon':'الإثنين','Tue':'الثلاثاء','Wed':'الأربعاء','Thu':'الخميس','Fri':'الجمعة','Sat':'السبت' };
+    return map[parts] || '';
+  }
+
+  // 📅 تنسيق التاريخ: YYYY/MM/DD
+  function formatDate(v){
+    if(!v) return '';
+    const d = new Date(v);
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    return `${y}/${m}/${dd}`;
+  }
+
+  // ⏰ تنسيق الوقت: 12 ساعة مع ص/م
+  function formatTime(v){
+    if(!v) return '';
+    const [hh, mm] = v.split(':');
+    let h = parseInt(hh, 10);
+    const ampm = h >= 12 ? 'م' : 'ص';
+    h = h % 12;
+    h = h ? h : 12;
+    return `${h}:${mm} ${ampm}`;
+  }
+
+  function bind(){
+    ids.forEach(id => {
+      const inp = document.getElementById(id);
+      const out = document.getElementById('o_' + id);
+      if(!inp || !out) return;
+      const update = () => { out.textContent = inp.value.trim() || '........'; };
+      inp.addEventListener('input', update);
+      update();
+    });
+
+    document.getElementById('companyAddr').addEventListener('input', function(){
+      document.getElementById('o_companyAddr2').textContent = this.value.trim() || '........';
+    });
+    document.getElementById('o_companyAddr2').textContent = document.getElementById('companyAddr').value;
+
+    const dateInp = document.getElementById('date');
+    const dateOut = document.getElementById('o_date');
+    dateInp.addEventListener('input', ()=>{ dateOut.textContent = formatDate(dateInp.value) || '........'; });
+
+    const timeInp = document.getElementById('time');
+    const timeOut = document.getElementById('o_time');
+    const timeOut2 = document.getElementById('o_time2');
+    timeInp.addEventListener('input', ()=>{
+      timeOut.textContent = formatTime(timeInp.value) || '........';
+      timeOut2.textContent = formatTime(timeInp.value) || '........';
+    });
+
+    const issInp = document.getElementById('issueDate');
+    const issOut = document.getElementById('o_issueDate');
+    issInp.addEventListener('input', ()=>{ issOut.textContent = formatDate(issInp.value) || '........'; });
+
+    const usage = document.getElementById('usage');
+    usage.addEventListener('change', ()=>{ document.getElementById('o_usage').textContent = usage.value; });
+    document.getElementById('o_usage').textContent = usage.value;
+
+    document.getElementById('sellerName').addEventListener('input', function(){
+      document.getElementById('o_sellerName2').textContent = this.value.trim() || '................';
+    });
+    document.getElementById('buyerName').addEventListener('input', function(){
+      document.getElementById('o_buyerName2').textContent = this.value.trim() || '................';
+    });
+    document.getElementById('ownerName').addEventListener('input', function(){
+      document.getElementById('o_ownerName2').textContent = this.value.trim() || '................';
+    });
+  }
+
+  // ⭐ تعبئة تلقائية عند الفتح (بتوقيت النجف)
+  function autoFillDateTime(){
+    const dateInp = document.getElementById('date');
+    const timeInp = document.getElementById('time');
+    const issInp = document.getElementById('issueDate');
+    const dayInp = document.getElementById('day');
+
+    if(!dateInp.value){
+      dateInp.value = todayISO();
+      document.getElementById('o_date').textContent = formatDate(dateInp.value);
+    }
+    if(!timeInp.value){
+      const t24 = nowTime24();
+      timeInp.value = t24;
+      document.getElementById('o_time').textContent = formatTime(t24);
+      document.getElementById('o_time2').textContent = formatTime(t24);
+    }
+    if(!issInp.value){
+      issInp.value = todayISO();
+      document.getElementById('o_issueDate').textContent = formatDate(issInp.value);
+    }
+    if(!dayInp.value){
+      dayInp.value = todayDayName();
+      document.getElementById('o_day').textContent = dayInp.value;
+    }
+  }
+
+  let userChangedTime = false;
+  function autoUpdateTime(){
+    const timeInp = document.getElementById('time');
+    timeInp.addEventListener('input', ()=>{ userChangedTime = true; });
+    setInterval(()=>{
+      if(!userChangedTime){
+        const t24 = nowTime24();
+        timeInp.value = t24;
+        document.getElementById('o_time').textContent = formatTime(t24);
+        document.getElementById('o_time2').textContent = formatTime(t24);
+      }
+    }, 60000);
+  }
+
+  function resetAll(){
+    if(!confirm('هل تريد تفريغ كل الحقول؟')) return;
+    document.querySelectorAll('input, textarea, select').forEach(el=>{
+      if(el.id==='companyAddr') el.value = 'النجف | المعارض القديمة | بلوك ٤';
+      else if(el.id==='companyPhone') el.value = '07800009500';
+      else if(el.id==='companyEmail') el.value = 'zaid.car@gmail.com';
+      else if(el.tagName==='SELECT') el.selectedIndex = 0;
+      else el.value = '';
+    });
+    document.querySelectorAll('[id^="o_"]').forEach(el=>{ el.textContent = '........'; });
+    document.getElementById('o_usage').textContent = document.getElementById('usage').value;
+    document.getElementById('o_companyAddr2').textContent = 'النجف | المعارض القديمة | بلوك ٤';
+    document.getElementById('o_companyEmail').textContent = 'zaid.car@gmail.com';
+    document.getElementById('o_companyPhone').textContent = '07800009500';
+    document.getElementById('o_companyAddr').textContent = 'النجف | المعارض القديمة | بلوك ٤';
+    userChangedTime = false;
+    setTimeout(autoFillDateTime, 100);
+  }
+
+  function toggleTheme(){
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    const icon = isDark ? '☀️' : '🌙';
+    const txt = isDark ? 'فاتح' : 'داكن';
+    const txtFull = isDark ? 'تبديل للوضع الفاتح ☀️' : 'تبديل للوضع الداكن 🌙';
+    document.getElementById('themeIconR').textContent = icon;
+    document.getElementById('themeTextR').textContent = txt;
+    document.getElementById('themeIconL').textContent = icon;
+    document.getElementById('themeTextL').textContent = txt;
+    document.getElementById('themeIconI').textContent = icon;
+    document.getElementById('themeTextI').textContent = txtFull;
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  (function initTheme(){
+    if(localStorage.getItem('theme') === 'dark'){
+      document.body.classList.add('dark');
+      document.getElementById('themeIconR').textContent = '☀️';
+      document.getElementById('themeTextR').textContent = 'فاتح';
+      document.getElementById('themeIconL').textContent = '☀️';
+      document.getElementById('themeTextL').textContent = 'فاتح';
+      document.getElementById('themeIconI').textContent = '☀️';
+      document.getElementById('themeTextI').textContent = 'تبديل للوضع الفاتح ☀️';
+    }
+  })();
+
+  bind();
+  autoFillDateTime();
+  autoUpdateTime();
+</script>
+
+<script>
+  // 🎨 مبدّل النماذج العشرين
+  function setTemplate(n){
+    const cls = document.body.className.replace(/\btpl-\d+\b/g, '').trim();
+    document.body.className = (cls ? cls + ' ' : '') + 'tpl-' + n;
+    document.body.classList.toggle('zaid', (+n >= 11 && +n <= 15));
+    localStorage.setItem('tpl', String(n));
+  }
+  (function initTemplate(){
+    const t = localStorage.getItem('tpl') || '1';
+    if(t !== '1') document.body.classList.add('tpl-' + t);
+    if(+t >= 11 && +t <= 15) document.body.classList.add('zaid');
+    document.getElementById('templateSelect').value = t;
+  })();
+
+  // 🔄 مرايا اليوم/التاريخ/الوقت/الإصدار داخل بند التحرير
+  (function(){
+    const pairs = [['o_day','m_day'],['o_date','m_date'],['o_time','m_time'],['o_issueDate','m_issue']];
+    pairs.forEach(function(pair){
+      const src = document.getElementById(pair[0]);
+      const dst = document.getElementById(pair[1]);
+      if(!src || !dst) return;
+      const sync = function(){ dst.textContent = src.textContent; };
+      new MutationObserver(sync).observe(src, {childList:true, characterData:true, subtree:true});
+      sync();
+    });
+  })();
+
+  // ➕ اسم المعرض: ربط مباشر + حماية من التفريغ
+  (function(){
+    const inp = document.getElementById('companyName');
+    const out = document.getElementById('o_companyName');
+    const DEFAULT_NAME = 'زيد لتجارة السيارات';
+    function upd(){ out.textContent = inp.value.trim() || DEFAULT_NAME; }
+    inp.addEventListener('input', upd);
+    upd();
+    const orig = window.resetAll;
+    window.resetAll = function(){
+      orig();
+      inp.value = DEFAULT_NAME;
+      out.textContent = DEFAULT_NAME;
+    };
+  })();
+
+  // ➕ سكن المالك الشرعي
+  (function(){
+    const inp = document.getElementById('ownerAddr');
+    const out = document.getElementById('o_ownerAddr');
+    if(!inp || !out) return;
+    function upd(){ out.textContent = inp.value.trim() || '................'; }
+    inp.addEventListener('input', upd);
+    upd();
+  })();
+
+  // ➕ حساب الباقي تلقائياً (بدل البيع − المقبوض)
+  (function(){
+    const total = document.getElementById('total');
+    const paid  = document.getElementById('paid');
+    const remain = document.getElementById('remain');
+    const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    function calc(){
+      const t = parseFloat(total.value) || 0;
+      const p = parseFloat(paid.value) || 0;
+      const r = Math.max(t - p, 0);
+      remain.value = r;
+      document.getElementById('o_total').textContent  = total.value ? fmt(total.value) : '........';
+      document.getElementById('o_paid').textContent   = paid.value  ? fmt(paid.value)  : '........';
+      document.getElementById('o_remain').textContent = r ? fmt(String(r)) : '........';
+    }
+    total.addEventListener('input', calc);
+    paid.addEventListener('input', calc);
+    remain.addEventListener('input', function(){
+      document.getElementById('o_remain').textContent = this.value ? fmt(this.value) : '........';
+    });
+  })();
+</script>
+
+</body>
+</html>

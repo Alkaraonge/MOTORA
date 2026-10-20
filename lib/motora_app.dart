@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'data/business_store.dart';
 import 'screens/home_shell.dart';
 import 'theme/motora_theme.dart';
 
@@ -12,12 +13,19 @@ class MotoraApp extends StatefulWidget {
 
 class _MotoraAppState extends State<MotoraApp> {
   int _themeIndex = 0;
+  late final BusinessStore _store = BusinessStore()..load();
+
+  @override
+  void dispose() {
+    _store.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MOTORA',
+      title: 'زيد للسيارات',
       locale: const Locale('ar'),
       theme: motoraThemes[_themeIndex].theme,
       themeAnimationDuration: const Duration(milliseconds: 420),
@@ -27,6 +35,7 @@ class _MotoraAppState extends State<MotoraApp> {
         child: child ?? const SizedBox.shrink(),
       ),
       home: HomeShell(
+        store: _store,
         selectedThemeIndex: _themeIndex,
         onThemeChanged: (index) => setState(() => _themeIndex = index),
       ),

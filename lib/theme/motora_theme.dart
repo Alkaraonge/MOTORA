@@ -262,7 +262,7 @@ const List<MotoraThemeSpec> motoraThemes = <MotoraThemeSpec>[
   MotoraThemeSpec(
     name: 'الزمرد',
     tagline: 'هدوء راقٍ',
-    fontFamily: 'IBMPlexArabic',
+    fontFamily: 'NotoArabic',
     brightness: Brightness.dark,
     primary: Color(0xFF48C78E),
     secondary: Color(0xFF0D6B4B),
@@ -292,7 +292,7 @@ const List<MotoraThemeSpec> motoraThemes = <MotoraThemeSpec>[
   MotoraThemeSpec(
     name: 'اللؤلؤ',
     tagline: 'بساطة نقية',
-    fontFamily: 'NotoKufi',
+    fontFamily: 'Naskh',
     brightness: Brightness.light,
     primary: Color(0xFF263238),
     secondary: Color(0xFF90A4AE),
@@ -337,7 +337,7 @@ const List<MotoraThemeSpec> motoraThemes = <MotoraThemeSpec>[
   MotoraThemeSpec(
     name: 'آركتيك تك',
     tagline: 'تقنية باردة',
-    fontFamily: 'ArefRuqaa',
+    fontFamily: 'ElMessiri',
     brightness: Brightness.dark,
     primary: Color(0xFF32D4F5),
     secondary: Color(0xFF176E8C),
@@ -352,7 +352,7 @@ const List<MotoraThemeSpec> motoraThemes = <MotoraThemeSpec>[
   MotoraThemeSpec(
     name: 'غروب',
     tagline: 'طاقة ودفء',
-    fontFamily: 'Scheherazade',
+    fontFamily: 'Markazi',
     brightness: Brightness.light,
     primary: Color(0xFFE85D2A),
     secondary: Color(0xFFFFB03A),

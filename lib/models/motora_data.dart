@@ -6,83 +6,76 @@ class Vehicle {
     required this.name,
     required this.category,
     required this.price,
-    required this.power,
-    required this.range,
+    required this.year,
+    required this.status,
     required this.icon,
   });
 
   final String name;
   final String category;
   final String price;
-  final String power;
-  final String range;
+  final String year;
+  final String status;
   final IconData icon;
 }
 
 const List<Vehicle> vehicles = <Vehicle>[
   Vehicle(
-    name: 'MOTORA ONE',
-    category: 'سيدان تنفيذية',
-    price: 'ابتداءً من ٢١٨,٠٠٠ ر.س',
-    power: '٤٨٩ حصان',
-    range: '٦٢٠ كم',
+    name: 'تويوتا كامري',
+    category: 'سيدان • أبيض لؤلؤي',
+    price: '٣٨,٥٠٠,٠٠٠ د.ع',
+    year: '٢٠٢٤',
+    status: 'متاحة',
     icon: Icons.directions_car_filled_rounded,
   ),
   Vehicle(
-    name: 'MOTORA X',
-    category: 'دفع رباعي فاخر',
-    price: 'ابتداءً من ٢٨٥,٠٠٠ ر.س',
-    power: '٥٣٠ حصان',
-    range: '٥٨٠ كم',
+    name: 'كيا سبورتاج',
+    category: 'دفع رباعي • أسود',
+    price: '٤٢,٠٠٠,٠٠٠ د.ع',
+    year: '٢٠٢٤',
+    status: 'محجوزة',
     icon: Icons.airport_shuttle_rounded,
   ),
   Vehicle(
-    name: 'MOTORA S',
-    category: 'كوبيه رياضية',
-    price: 'ابتداءً من ٣٤٩,٠٠٠ ر.س',
-    power: '٦٨٠ حصان',
-    range: '٥١٠ كم',
-    icon: Icons.electric_car_rounded,
+    name: 'هيونداي توسان',
+    category: 'دفع رباعي • رصاصي',
+    price: '٣٦,٧٥٠,٠٠٠ د.ع',
+    year: '٢٠٢٣',
+    status: 'متاحة',
+    icon: Icons.directions_car_rounded,
   ),
 ];
 
 @immutable
-class ServiceItem {
-  const ServiceItem({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.status,
+class SaleContract {
+  const SaleContract({
+    required this.number,
+    required this.buyer,
+    required this.vehicle,
+    required this.date,
+    required this.amount,
   });
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final String status;
+
+  final String number;
+  final String buyer;
+  final String vehicle;
+  final String date;
+  final String amount;
 }
 
-const List<ServiceItem> services = <ServiceItem>[
-  ServiceItem(
-    title: 'العناية الذكية',
-    subtitle: 'موعدك القادم بعد ٢,٤٥٠ كم',
-    icon: Icons.car_repair_rounded,
-    status: 'ممتاز',
+const List<SaleContract> contracts = <SaleContract>[
+  SaleContract(
+    number: 'ZC-٢٠٣٦-٠١٨',
+    buyer: 'أحمد كريم',
+    vehicle: 'تويوتا كامري ٢٠٢٤',
+    date: '٢٠ تشرين الأول ٢٠٢٦',
+    amount: '٣٨,٥٠٠,٠٠٠ د.ع',
   ),
-  ServiceItem(
-    title: 'المساعدة على الطريق',
-    subtitle: 'دعم على مدار الساعة أينما كنت',
-    icon: Icons.support_agent_rounded,
-    status: 'متاح',
-  ),
-  ServiceItem(
-    title: 'الشحن المنزلي',
-    subtitle: 'محطة الشحن متصلة وتعمل بكفاءة',
-    icon: Icons.ev_station_rounded,
-    status: 'متصل',
-  ),
-  ServiceItem(
-    title: 'MOTORA Shield',
-    subtitle: 'تغطية شاملة حتى أكتوبر ٢٠٢٩',
-    icon: Icons.verified_user_rounded,
-    status: 'نشط',
+  SaleContract(
+    number: 'ZC-٢٠٣٦-٠١٧',
+    buyer: 'محمد علي',
+    vehicle: 'كيا سبورتاج ٢٠٢٤',
+    date: '١٨ تشرين الأول ٢٠٢٦',
+    amount: '٤٢,٠٠٠,٠٠٠ د.ع',
   ),
 ];

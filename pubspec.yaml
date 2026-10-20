@@ -1,7 +1,7 @@
 name: motora
-description: "MOTORA - تجربة عربية فاخرة لعالم السيارات"
+description: "زيد للسيارات - إدارة السيارات والعقود"
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.36+2036
 
 environment:
   sdk: ^3.13.5
@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -17,34 +18,37 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/branding/
+    - assets/contract_designer.html
   fonts:
     - family: Cairo
       fonts:
-        - asset: assets/fonts/subset/Cairo.ttf
+        - asset: assets/fonts/original/Cairo.ttf
     - family: Tajawal
       fonts:
-        - asset: assets/fonts/subset/Tajawal.ttf
+        - asset: assets/fonts/original/Tajawal.ttf
     - family: Almarai
       fonts:
-        - asset: assets/fonts/subset/Almarai.ttf
+        - asset: assets/fonts/original/Almarai.ttf
     - family: Changa
       fonts:
-        - asset: assets/fonts/subset/Changa.ttf
+        - asset: assets/fonts/original/Changa.ttf
     - family: Amiri
       fonts:
-        - asset: assets/fonts/subset/Amiri.ttf
-    - family: Scheherazade
+        - asset: assets/fonts/original/Amiri.ttf
+    - family: Naskh
       fonts:
-        - asset: assets/fonts/subset/ScheherazadeNew.ttf
+        - asset: assets/fonts/original/NotoNaskhArabic-Regular.ttf
     - family: ReemKufi
       fonts:
-        - asset: assets/fonts/subset/ReemKufi.ttf
-    - family: ArefRuqaa
+        - asset: assets/fonts/original/ReemKufi.ttf
+    - family: NotoArabic
       fonts:
-        - asset: assets/fonts/subset/ArefRuqaaInk.ttf
-    - family: NotoKufi
+        - asset: assets/fonts/original/NotoSansArabic-Regular.ttf
+    - family: ElMessiri
       fonts:
-        - asset: assets/fonts/subset/NotoKufiArabic.ttf
-    - family: IBMPlexArabic
+        - asset: assets/fonts/original/ElMessiri.ttf
+    - family: Markazi
       fonts:
-        - asset: assets/fonts/subset/IBMPlexSansArabic.ttf
+        - asset: assets/fonts/original/Markazi.ttf
