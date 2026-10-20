@@ -6,7 +6,8 @@
 
 - الإصدار: `1.0.36`
 - رقم البناء: `2036`
-- الحزمة: `com.zaidcars.zaid_cars_app`
+- حزمة المشروع الأصلية: `com.zaidcars.zaid_cars_app`
+- حزمة APK المنشور: `com.zaidcars.zaid_cars_app.newdesign` لتثبيته بجانب الإصدار القديم دون حذف بياناته
 - الحد الأدنى: Android 7 (`API 24`)
 - ملف سامسونگ: `arm64-v8a`
 
@@ -28,6 +29,7 @@
 flutter pub get
 flutter analyze
 flutter test
+ORG_GRADLE_PROJECT_customApplicationId=com.zaidcars.zaid_cars_app.newdesign \
 flutter build apk --release --target-platform android-arm64 \
   --build-name=1.0.36 --build-number=2036
 ```

@@ -44,6 +44,9 @@ jobs:
         run: flutter test
 
       - name: Build signed release APK for Samsung
+        env:
+          ORG_GRADLE_PROJECT_customApplicationId: com.zaidcars.zaid_cars_app.newdesign
+          ORG_GRADLE_PROJECT_customAppLabel: زيد للسيارات الجديد
         run: flutter build apk --release --target-platform android-arm64 --build-name=1.0.36 --build-number=2036
 
       - name: Prepare named APK
@@ -67,7 +70,7 @@ jobs:
 
             - Version: 1.0.36
             - Build: 2036
-            - Package: com.zaidcars.zaid_cars_app
+            - Package: com.zaidcars.zaid_cars_app.newdesign
             - Architecture: arm64-v8a (Samsung)
             - Build type: Release APK
           prerelease: true
