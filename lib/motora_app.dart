@@ -13,7 +13,25 @@ class MotoraApp extends StatefulWidget {
 
 class _MotoraAppState extends State<MotoraApp> {
   int _themeIndex = 0;
-  late final BusinessStore _store = BusinessStore()..load();
+  late final BusinessStore _store = BusinessStore();
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    await _store.load();
+    final saved = int.tryParse(_store.settings['themeIndex'] ?? '0') ?? 0;
+    if (!mounted) return;
+    setState(() => _themeIndex = saved.clamp(0, motoraThemes.length - 1));
+  }
+
+  void _changeTheme(int index) {
+    setState(() => _themeIndex = index);
+    _store.updateSettings(<String, String>{'themeIndex': '$index'});
+  }
 
   @override
   void dispose() {
@@ -37,7 +55,7 @@ class _MotoraAppState extends State<MotoraApp> {
       home: HomeShell(
         store: _store,
         selectedThemeIndex: _themeIndex,
-        onThemeChanged: (index) => setState(() => _themeIndex = index),
+        onThemeChanged: _changeTheme,
       ),
     );
   }

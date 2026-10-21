@@ -4,8 +4,8 @@
 
 ## الإصدار
 
-- الإصدار: `1.0.36`
-- رقم البناء: `2036`
+- الإصدار: `1.0.37`
+- رقم البناء: `2037`
 - حزمة المشروع الأصلية: `com.zaidcars.zaid_cars_app`
 - حزمة APK المنشور: `com.zaidcars.zaid_cars_app.newdesign` لتثبيته بجانب الإصدار القديم دون حذف بياناته
 - الحد الأدنى: Android 7 (`API 24`)
@@ -19,7 +19,9 @@
 - عقود البيع وحقول البائع والمشتري والمالك والسيارة والمبلغ والملاحظات.
 - الصندوق والمصاريف وأرباح السيارات والموظفون والمهام.
 - التقارير الأسبوعية والشهرية، محول العملات، النسخ الاحتياطي وتصدير Excel.
-- حفظ محلي دائم للعمليات الأساسية، مع دعم الأرقام العربية والإنجليزية.
+- حفظ محلي دائم لكل الوحدات مع الإضافة والتعديل والحذف والبحث.
+- البيع الآجل ينشئ ديناً تلقائياً، والدفعات تحدّث المتبقي، والشراء يضيف السيارة للمخزون.
+- نسخة احتياطية JSON قابلة للاستعادة وتصدير CSV متوافق مع Excel.
 - عشرة ثيمات تغيّر الألوان والخطوط والبطاقات والأزرار بالكامل.
 - خطوط عربية كاملة مضمّنة لمنع انفصال الحروف أو تشوهها.
 
@@ -31,12 +33,12 @@ flutter analyze
 flutter test
 ORG_GRADLE_PROJECT_customApplicationId=com.zaidcars.zaid_cars_app.newdesign \
 flutter build apk --release --target-platform android-arm64 \
-  --build-name=1.0.36 --build-number=2036
+  --build-name=1.0.37 --build-number=2037
 ```
 
 يبني GitHub Actions ملف APK، ويرفعه كـ artifact ثم ينشره في Release تجريبي.
 
-[تنزيل APK لسامسونگ](https://github.com/Alkaraonge/MOTORA/releases/download/v1.0.36-build.2036/Zaid-Cars-v1.0.36-build.2036-Samsung.apk)
+[تنزيل APK لسامسونگ](https://github.com/Alkaraonge/MOTORA/releases/download/v1.0.37-build.2037/Zaid-Cars-v1.0.37-build.2037-Samsung.apk)
 
 ## الخطوط والتراخيص
 
