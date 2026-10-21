@@ -45,36 +45,37 @@ jobs:
 
       - name: Build signed release APK for Samsung
         env:
-          ORG_GRADLE_PROJECT_customApplicationId: com.zaidcars.zaid_cars_app.newdesign
-          ORG_GRADLE_PROJECT_customAppLabel: زيد للسيارات الجديد
-        run: flutter build apk --release --target-platform android-arm64 --build-name=1.0.37 --build-number=2037
+          ORG_GRADLE_PROJECT_customApplicationId: com.zaidcars.zaid_cars_app.functional
+          ORG_GRADLE_PROJECT_customAppLabel: زيد للسيارات التشغيلي
+        run: flutter build apk --release --target-platform android-arm64 --build-name=1.0.38 --build-number=2038
 
       - name: Prepare named APK
-        run: cp build/app/outputs/flutter-apk/app-release.apk Zaid-Cars-v1.0.37-build.2037-Samsung.apk
+        run: cp build/app/outputs/flutter-apk/app-release.apk Zaid-Cars-v1.0.38-build.2038-Samsung.apk
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Zaid-Cars-v1.0.37-build.2037-Samsung
-          path: Zaid-Cars-v1.0.37-build.2037-Samsung.apk
+          name: Zaid-Cars-v1.0.38-build.2038-Samsung
+          path: Zaid-Cars-v1.0.38-build.2038-Samsung.apk
           if-no-files-found: error
           retention-days: 14
 
       - name: Publish installable pre-release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.37-build.2037
-          name: زيد للسيارات 1.0.37 (Build 2037)
+          tag_name: v1.0.38-build.2038
+          name: زيد للسيارات 1.0.38 (Build 2038)
           body: |
             نسخة Android تجريبية تشغيلية جاهزة للتثبيت.
 
-            - Version: 1.0.37
-            - Build: 2037
-            - Package: com.zaidcars.zaid_cars_app.newdesign
+            - Version: 1.0.38
+            - Build: 2038
+            - Package: com.zaidcars.zaid_cars_app.functional
             - Architecture: arm64-v8a (Samsung)
             - Build type: Release APK
+            - Stable test signature for future APK updates
             - Functional local database with add, edit, delete, payments, reports, backup, and CSV export
           prerelease: true
           make_latest: false
           fail_on_unmatched_files: true
-          files: Zaid-Cars-v1.0.37-build.2037-Samsung.apk
+          files: Zaid-Cars-v1.0.38-build.2038-Samsung.apk

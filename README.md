@@ -4,10 +4,10 @@
 
 ## الإصدار
 
-- الإصدار: `1.0.37`
-- رقم البناء: `2037`
+- الإصدار: `1.0.38`
+- رقم البناء: `2038`
 - حزمة المشروع الأصلية: `com.zaidcars.zaid_cars_app`
-- حزمة APK المنشور: `com.zaidcars.zaid_cars_app.newdesign` لتثبيته بجانب الإصدار القديم دون حذف بياناته
+- حزمة APK المنشور: `com.zaidcars.zaid_cars_app.functional` لتثبيته بجانب الإصدار القديم والنسخة التجريبية المعطوبة
 - الحد الأدنى: Android 7 (`API 24`)
 - ملف سامسونگ: `arm64-v8a`
 
@@ -31,14 +31,14 @@
 flutter pub get
 flutter analyze
 flutter test
-ORG_GRADLE_PROJECT_customApplicationId=com.zaidcars.zaid_cars_app.newdesign \
+ORG_GRADLE_PROJECT_customApplicationId=com.zaidcars.zaid_cars_app.functional \
 flutter build apk --release --target-platform android-arm64 \
-  --build-name=1.0.37 --build-number=2037
+  --build-name=1.0.38 --build-number=2038
 ```
 
 يبني GitHub Actions ملف APK، ويرفعه كـ artifact ثم ينشره في Release تجريبي.
 
-[تنزيل APK لسامسونگ](https://github.com/Alkaraonge/MOTORA/releases/download/v1.0.37-build.2037/Zaid-Cars-v1.0.37-build.2037-Samsung.apk)
+[تنزيل APK لسامسونگ](https://github.com/Alkaraonge/MOTORA/releases/download/v1.0.38-build.2038/Zaid-Cars-v1.0.38-build.2038-Samsung.apk)
 
 ## الخطوط والتراخيص
 

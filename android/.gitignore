@@ -9,3 +9,6 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Public test-only signing key used by prerelease APKs for stable updates.
+!app/motora-test.keystore

@@ -261,7 +261,7 @@ class ManagementView extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const Text(
-                'الإصدار 1.0.37 (Build 2037)',
+                'الإصدار 1.0.38 (Build 2038)',
                 textDirection: TextDirection.ltr,
               ),
             ],

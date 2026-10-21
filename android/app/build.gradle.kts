@@ -34,11 +34,21 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        // Stable test-only key so APK updates built by different CI runners
+        // keep the same signature. Production/Play signing must use a private
+        // key stored outside this public repository.
+        create("motoraTest") {
+            storeFile = file("motora-test.keystore")
+            storePassword = "android"
+            keyAlias = "motora"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("motoraTest")
         }
     }
 }
