@@ -61,7 +61,7 @@ public final class MainActivity extends Activity {
                 }
                 @Override public boolean onRenderProcessGone(WebView v, RenderProcessGoneDetail detail) {
                     webView = null;
-                    showError("Android System WebView stopped. Please update Chrome / Android System WebView and restart this app.");
+                    showError("توقفت خدمة عرض أندرويد. يُرجى تحديث Chrome أو Android System WebView وإعادة فتح التطبيق.");
                     v.destroy();
                     return true;
                 }
@@ -69,13 +69,13 @@ public final class MainActivity extends Activity {
             setContentView(ui);
             ui.loadUrl("file:///android_asset/index.html");
         } catch (Throwable t) {
-            showError("Unable to start the local interface: " + t.getClass().getSimpleName());
+            showError("تعذّر تشغيل الواجهة المحلية: " + t.getClass().getSimpleName());
         }
     }
 
     private void showError(String message) {
         TextView label = new TextView(this);
-        label.setText("DBC Independent 1.2.0\n\n" + message + "\n\nNo car settings were changed.");
+        label.setText("DBC Independent 1.2.0\n\n" + message + "\n\nلم تتغير أي إعدادات للسيارة.");
         label.setGravity(Gravity.CENTER);
         label.setTextColor(Color.WHITE);
         label.setTextSize(18);
