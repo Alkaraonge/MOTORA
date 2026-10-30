@@ -1,0 +1,25 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: feature_matrix.csv>index,معرف,الوحدة,المؤشرات البرمجية,سيناريوهات الاختبار المطلوبة,نتيجة الفحص,تجربة على الجهاز,مطابقة الواجهة,مطابقة السلوك
+0,1,تفعيل وترخيص,"ActivationActivity, LicenseRequestActivity, LicenseManager",أول تشغيل، معرف الجهاز، انقطاع الإنترنت، رسالة الرفض/النجاح، شروط ترخيص مستقل,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+1,2,الواجهة الرئيسية,"MainActivity, ControlsFragment, ViewPagerAdapter, CustomNavAdapter",كل شريط وقائمة وبطاقة واختصار وطريقة التنقل,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+2,3,التخصيص واللغات,"AppThemeManager, ThemeConfig, LocaleHelper, SettingsManager",الخطوط والألوان وأوضاع اللغة والحفظ وإعادة التشغيل,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+3,4,بيانات BYD المباشرة,"BydLiveDataSource, BydBmsDataSource, EvTelemetryState",الدقة والوحدات والتحديثات والبيانات الناقصة حسب موديل السيارة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+4,5,البطارية والطاقة,"EnergyFragment, EnergyViewModel, BatteryDetailActivity, RangeCalculator",SoC وSoH والجهد والحرارة ومجال المدى والسجل,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+5,6,الرحلات,"TripTrackingService, AutoTripDetector, ManualTripTracker, TripLogFragment",البدء/الإيقاف التلقائي واليدوي والاسترجاع والتكرار والسجلات,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+6,7,الإحصاء والتعرفة,"StatisticsFragment, TripCalculator, TariffSettingsScreenKt",الطاقة والكيلومترات والتكاليف والتجميع والتصدير,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+7,8,النوافذ/الأبواب,"DoorsWindowsFragment, KemetWindowController, CarActionActivity",الواجهة والمحاكاة أولاً؛ التحقق الرسمي من نوع السيارة ووسيلة الربط,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+8,9,المناخ,"CarActionActivity, دوال toggleClimate..., cycleClimateFanSpeed",الحالات، معلومات الواجهة، قيود وضع الوقوف، إمكانيات الطراز,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+9,10,الكاميرات/الرؤية,"CamerasVisionTab, AvmCameraProbe, CameraStateMonitor",توفر كاميرات المصنع والواجهات والدقة وعمر الفريم وطرق الإغلاق,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+10,11,مراقبة النقطة العمياء,"BSDSentinelService, BlindSpotControllerKemet, BlindSpotPreferences",اختبار محاكاة وقيود السلامة قبل أي استخدام على مركبة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+11,12,الإضاءة/الصوت,"LightsFragment, AmbientLightController, AudioVisualizer, KemetAudioEngine",التوافق مع أجهزة السيارة وتغيّر الصوت/الإضاءة ومخارج الصوت,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+12,13,الشبكات والشريحة,"NetworkController, ModemHubFragment, EsimController, HotspotFixHelper",بيانات SIM/eSIM وAPN والاتصال والتجوال والواي فاي,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+13,14,السحابة في الوقوف,"CloudWifiManager, CloudParkedKeeperService, دوال Cloud في ViewModel",التوفر، استعادة الاتصال، فشل الشبكة، استهلاك الطاقة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+14,15,الصيانة/حالة النظام,"MaintenanceHubFragment, ServiceHubFragment, BatteryHealthMonitor",القياسات، التنبيهات، حدود الصلاحية، سجلات الحالة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+15,16,إدارة النظام,"AdbEngineHubFragment, ShizukuBridge, AdbRestoreManager, GuardianService",محاكاة الأذونات والتراجع عن التغييرات؛ لا تُنقل امتيازات من دون تفويض,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+16,17,التعافي والتحديث,"AdbVerifyWorker, KemetMonitorService, دوال OTA/ADAS في ViewModel",التحديثات والأخطاء والاستعادة والنسخ الاحتياطي,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+17,18,الواجهة العائمة,"FloatingWidgetService, KemetFloatingService, HomeWidgetManager",الطبقات والشفافية والإغلاق وصلاحيات العرض,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+18,19,تقسيم الشاشة/العدادات,"SplitWorkspaceFragment, ClusterProjectionManager",دعم الشاشات والمقاسات والتوافق مع تطبيقات النظام,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+19,20,إشعارات واختصارات,"KemetNotificationListener, BydVehicleEventReceiver, BootReceiver",استمرار الخدمات وإشعاراتها وسلوك إعادة تشغيل الوحدة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+20,21,الطقس والوقت,"WeatherRuntime, BydWeatherInjector, EgyptManualDSTCalculator",صلاحية البيانات، المنطقة الزمنية، جودة الهواء، انعدام الشبكة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+21,22,أوامر مخصصة وأحداث,"EventAutomationFragment, ShellFragment, WhitelistFragment",نطاق الوظائف وشروط التفويض والعزل الأمني,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
+22,23,الإعدادات والدعم,"SettingsFragment, SupportFragment, DiagnosticsActivity",الإرشادات، سجلات الأخطاء، التحقق من الإعدادات، مراكز المساعدة,مرصود في APK فقط,لم تبدأ,غير مثبتة,غير مثبتة
