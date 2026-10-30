@@ -75,7 +75,7 @@ public final class MainActivity extends Activity {
 
     private void showError(String message) {
         TextView label = new TextView(this);
-        label.setText("DBC Independent 1.1.0\n\n" + message + "\n\nNo car settings were changed.");
+        label.setText("DBC Independent 1.2.0\n\n" + message + "\n\nNo car settings were changed.");
         label.setGravity(Gravity.CENTER);
         label.setTextColor(Color.WHITE);
         label.setTextSize(18);
