@@ -18,6 +18,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.10.2'
+      - name: Validate RTL localization and JavaScript
+        run: python3 kemetdbc-independent/scripts/validate_ui.py
       - name: Install Android SDK
         shell: bash
         run: |
